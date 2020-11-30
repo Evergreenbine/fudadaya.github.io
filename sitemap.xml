@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>fudada.fun/pictures/index.html</loc>
+    <loc>fudada.fun/2020/11/28/Netty%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2020-11-30</lastmod>
     
   </url>
   
   <url>
-    <loc>fudada.fun/2020/11/28/Netty%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</loc>
+    <loc>fudada.fun/pictures/index.html</loc>
     
     <lastmod>2020-11-30</lastmod>
     
@@ -88,20 +88,6 @@
 
   
   <url>
-    <loc>fudada.fun/tags/Collection/</loc>
-    <lastmod>2020-11-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>fudada.fun/tags/NIO/</loc>
-    <lastmod>2020-11-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>fudada.fun/tags/Netty/</loc>
     <lastmod>2020-11-30</lastmod>
     <changefreq>daily</changefreq>
@@ -115,14 +101,21 @@
     <priority>0.6</priority>
   </url>
   
-
-  
   <url>
-    <loc>fudada.fun/categories/Java%E5%9F%BA%E7%A1%80/</loc>
+    <loc>fudada.fun/tags/NIO/</loc>
     <lastmod>2020-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
+  
+  <url>
+    <loc>fudada.fun/tags/Collection/</loc>
+    <lastmod>2020-11-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
   
   <url>
     <loc>fudada.fun/categories/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
@@ -133,6 +126,13 @@
   
   <url>
     <loc>fudada.fun/categories/JUC/</loc>
+    <lastmod>2020-11-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>fudada.fun/categories/Java%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2020-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
