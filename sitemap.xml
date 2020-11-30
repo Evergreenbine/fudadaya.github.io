@@ -30,16 +30,44 @@
   </url>
   
   <url>
-    <loc>fudada.fun/2020/04/17/Hexo-Theme-LiveMyLife/</loc>
+    <loc>fudada.fun/404.html</loc>
     
     <lastmod>2020-11-30</lastmod>
     
   </url>
   
   <url>
-    <loc>fudada.fun/404.html</loc>
+    <loc>fudada.fun/2020/11/26/ThreadPool/</loc>
     
     <lastmod>2020-11-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>fudada.fun/photography/index.html</loc>
+    
+    <lastmod>2020-11-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>fudada.fun/2020/11/26/ReentrantLock/</loc>
+    
+    <lastmod>2020-11-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>fudada.fun/2020/11/27/Selector/</loc>
+    
+    <lastmod>2020-11-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>fudada.fun/2020/11/26/Hashmap1.7/</loc>
+    
+    <lastmod>2020-11-28</lastmod>
     
   </url>
   
@@ -53,14 +81,21 @@
 
   
   <url>
-    <loc>fudada.fun/tags/Hexo/</loc>
+    <loc>fudada.fun/tags/Collection/</loc>
     <lastmod>2020-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>fudada.fun/tags/Hexo-Theme-LiveMyLife/</loc>
+    <loc>fudada.fun/tags/JUC/</loc>
+    <lastmod>2020-11-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>fudada.fun/tags/NIO/</loc>
     <lastmod>2020-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -69,7 +104,21 @@
 
   
   <url>
-    <loc>fudada.fun/categories/Hexo-Theme-LiveMyLife/</loc>
+    <loc>fudada.fun/categories/Java%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2020-11-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>fudada.fun/categories/JUC/</loc>
+    <lastmod>2020-11-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>fudada.fun/categories/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2020-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
