@@ -205,13 +205,6 @@
 
           
           <li>
-            <a href="/about/">About</a>
-          </li>
-          
-          
-
-          
-          <li>
             <a href="/archive/">Archives</a>
           </li>
           
@@ -226,14 +219,21 @@
 
           
           <li>
-            <a href="/pictures/">pictures</a>
+            <a href="/tags/">Tags</a>
           </li>
           
           
 
           
           <li>
-            <a href="/tags/">Tags</a>
+            <a href="/about/">About</a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a href="/pictures/">pictures</a>
           </li>
           
           
@@ -336,7 +336,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">279</span> In Total
+              Words <span class="post-count">355</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -417,6 +417,16 @@
 </ul>
 <p>主从Reactor模式了，主Reactor主要负责与请求客户端进行连接，然后分发到从SubReactor,下图中没出来，但SubReactor可以是多个的。其实就是将上面的单Reactor多线程进行了分层，将连接单独划分出一个Reactor。</p>
 <p><img src="https://i.loli.net/2020/12/01/fsjxX4RqbrlPdmp.png" alt="未命名文件 (1)"></p>
+<ul>
+<li>Netty模型</li>
+</ul>
+<p>简单版</p>
+<ol>
+<li>BossGroup线程维护Selector，只关注Accept连接</li>
+<li>当接收到Accept事件，获取到对应的SocketChannel，封装成NIOSocketChannel并注册到Worker线程（事件循环），并进行维护</li>
+<li>当Worker线程监听到Selector中通道发生自己感兴趣的时间后，就进行处理</li>
+</ol>
+<p><img src="https://i.loli.net/2020/12/01/hPb3o1ECSarBjcx.png" alt="image-20201201222103300"></p>
 
 
         <hr>
