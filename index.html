@@ -424,15 +424,21 @@
   
 
 
-  <a href="/2020/12/03/排序算法/">
+  <a href="/2020/12/03/explain查询计划的使用/">
     <h2 class="post-title">
-      排序算法
+      explain查询计划的使用
     </h2>
     <h3 class="post-subtitle">
-      
+      主要介绍explain查询计划的使用和索引失效的情况
     </h3>
     <div class="post-content-preview">
-      ...
+      explain查询计划的使用查询计划是用作分析sql语句执行情况的一个工具，通过这些执行情况，我们可以粗略的知道这条sql语句的执行时做了些啥事情，比如说是否走了索引，使用了哪些索引健，是否产生了文件排序等等。
+组成结构
+我们一起来讨论一下这些字段分别是什么意思。
+
+索引失效
+全值匹配是最好的，即所有查询的都是索引列
+最佳左前缀法则,即加入有这样的索引（age,name,gender),我们......
     </div>
   </a>
   
@@ -441,6 +447,8 @@
     2020-12-03
   </p>
   <div class="tags">
+    
+    <a href="/tags/#Mysql" title="Mysql">Mysql</a>
     
   </div>
   
@@ -657,6 +665,10 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     <a href="/tags/#Collection" title="Collection" rel="1">Collection</a>
     
     
+    
+    <a href="/tags/#Mysql" title="Mysql" rel="1">Mysql</a>
+    
+    
   </div>
 </section>
 
@@ -717,8 +729,8 @@ AQS在学习ReentrantLock之前，我们必须先学下......
 <div class="widget">
   <ul>
     
-    <a href="2020/12/03/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
-      <li>排序算法</li>
+    <a href="2020/12/03/explain%E6%9F%A5%E8%AF%A2%E8%AE%A1%E5%88%92%E7%9A%84%E4%BD%BF%E7%94%A8/">
+      <li>explain查询计划的使用</li>
     </a>
     
     <a href="2020/11/28/Netty%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
@@ -781,6 +793,10 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     
     <a href="/categories/#Java基础">
       <li>Java基础</li>
+    </a>
+    
+    <a href="/categories/#MySql">
+      <li>MySql</li>
     </a>
     
   </ul>

@@ -133,10 +133,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="fudada.fun/2020/12/03/排序算法/">
+  <link rel="canonical" href="fudada.fun/2020/12/03/explain查询计划的使用/">
   <title>
     
-    排序算法 - Fudada&#39;s place
+    explain查询计划的使用 - Fudada&#39;s place
     
   </title>
 <meta name="generator" content="Hexo 4.2.1"></head>
@@ -292,7 +292,7 @@
   <style type="text/css">
     header.intro-header {
        /*post*/
-        background-image: url('');
+        background-image: url('/img/post/21head.jpg');
       
     }
 
@@ -317,9 +317,11 @@
           <div class="post-heading">
             <div class="tags">
               
+              <a class="tag" href="/tags/#Mysql" title="Mysql">Mysql</a>
+              
             </div>
-            <h1>排序算法</h1>
-            <h2 class="subheading"></h2>
+            <h1>explain查询计划的使用</h1>
+            <h2 class="subheading">主要介绍explain查询计划的使用和索引失效的情况</h2>
             <span class="meta">
               Posted by Fudada on
               2020-12-03
@@ -334,7 +336,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">0</span> In Total
+              Words <span class="post-count">324</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -394,7 +396,23 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        
+        <h1 id="explain查询计划的使用"><a href="#explain查询计划的使用" class="headerlink" title="explain查询计划的使用"></a>explain查询计划的使用</h1><p>查询计划是用作分析sql语句执行情况的一个工具，通过这些执行情况，我们可以粗略的知道这条sql语句的执行时做了些啥事情，比如说是否走了索引，使用了哪些索引健，是否产生了文件排序等等。</p>
+<h3 id="组成结构"><a href="#组成结构" class="headerlink" title="组成结构"></a>组成结构</h3><p><img src="https://i.loli.net/2020/12/03/o8RvTrLKynZE96t.png" alt="image-20201203205627607"></p>
+<p>我们一起来讨论一下这些字段分别是什么意思。</p>
+<p><img src="https://i.loli.net/2020/12/03/agOKuTqxbHDRowN.png" alt="explain"></p>
+<h3 id="索引失效"><a href="#索引失效" class="headerlink" title="索引失效"></a>索引失效</h3><ul>
+<li>全值匹配是最好的，即所有查询的都是索引列</li>
+<li>最佳左前缀法则,即加入有这样的索引（age,name,gender),我们只查询（age,gender)则会导致索引失效</li>
+<li>不在索引列上做任何操作，比如说使用函数，自动或手动的乐行转换，都会导致索引失效</li>
+<li>存储引擎不能使用索引中范围条件右边的列</li>
+<li>尽量使用覆盖索引，即保证查询的列都是索引列，避免索引回表</li>
+<li>尽量不使用范围查询，例如不要用 &lt;、&gt;、!=等</li>
+<li>is null,is not null 也无法使用索引</li>
+<li>like以通配符开头（‘%abc’)也会导致索引失效，即也是范围查询的一种</li>
+<li>字符串不加单引号也会导致索引失效</li>
+<li>少用or</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
 
         <hr>
         <!-- Pager -->
@@ -445,7 +463,7 @@
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=排序算法&body=Hi,I found this website and thought you might like it fudada.fun/2020/12/03/排序算法/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=explain查询计划的使用&body=Hi,I found this website and thought you might like it fudada.fun/2020/12/03/explain查询计划的使用/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -485,7 +503,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#explain查询计划的使用"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">explain查询计划的使用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#组成结构"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">组成结构</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#索引失效"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">索引失效</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text"></span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
@@ -506,6 +524,8 @@
             <a href="/tags/">FEATURED TAGS</a>
           </h5>
           <div class="tags">
+            
+            <a class="tag" href="/tags/#Mysql" title="Mysql">Mysql</a>
             
           </div>
         </section>
