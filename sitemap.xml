@@ -102,6 +102,13 @@
 
   
   <url>
+    <loc>fudada.fun/tags/Leetcode/</loc>
+    <lastmod>2020-12-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>fudada.fun/tags/Netty/</loc>
     <lastmod>2020-12-07</lastmod>
     <changefreq>daily</changefreq>
@@ -136,14 +143,14 @@
     <priority>0.6</priority>
   </url>
   
+
+  
   <url>
-    <loc>fudada.fun/tags/Leetcode/</loc>
+    <loc>fudada.fun/categories/Leetcode/</loc>
     <lastmod>2020-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
-  
-
   
   <url>
     <loc>fudada.fun/categories/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
@@ -168,13 +175,6 @@
   
   <url>
     <loc>fudada.fun/categories/MySql/</loc>
-    <lastmod>2020-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>fudada.fun/categories/Leetcode/</loc>
     <lastmod>2020-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

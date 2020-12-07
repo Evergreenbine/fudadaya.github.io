@@ -219,14 +219,14 @@
 
           
           <li>
-            <a href="/tags/">Tags</a>
+            <a href="/about/">About</a>
           </li>
           
           
 
           
           <li>
-            <a href="/about/">About</a>
+            <a href="/tags/">Tags</a>
           </li>
           
           
@@ -577,15 +577,16 @@ Reactor模式
   
 
 
-  <a href="/2020/11/26/ThreadPool/">
+  <a href="/2020/11/26/ReentrantLock/">
     <h2 class="post-title">
-      线程池
+      ReentrantLock
     </h2>
     <h3 class="post-subtitle">
-      主要介绍固定线程数的线程池的原理
+      
     </h3>
     <div class="post-content-preview">
-      线程池如果我们每一次处理任务都去创建一个线程去处理，这样会很耗费服务器性能。因为线程的创建销毁，线程的切换都是比较耗费性能的操作。所以为了使线程复用，即一个线程去处理多个任务，便产生了线程池。线程池其实是属于并发编程的一种设计模式，它有许多不同的实现。而在Java中，使用较多的线程池有固定大小线程池newFixedThreadPool，缓冲线程池newCachedThreadPool，定时任......
+      ReentrantLock源码解析在java中重入锁有两个，一个是synchronized关键字，是C++实现的，而另外一个就是本篇文章中的主角儿ReentrantLock。ReentrantLock是在jdk 1.5版本后引入的juc包中一个比较重要的工具类，由著名的并发大师Doug Lea编写；接下来就让我们一起来学习一下它吧。
+AQS在学习ReentrantLock之前，我们必须先学下......
     </div>
   </a>
   
@@ -612,16 +613,15 @@ Reactor模式
   
 
 
-  <a href="/2020/11/26/ReentrantLock/">
+  <a href="/2020/11/26/ThreadPool/">
     <h2 class="post-title">
-      ReentrantLock
+      线程池
     </h2>
     <h3 class="post-subtitle">
-      
+      主要介绍固定线程数的线程池的原理
     </h3>
     <div class="post-content-preview">
-      ReentrantLock源码解析在java中重入锁有两个，一个是synchronized关键字，是C++实现的，而另外一个就是本篇文章中的主角儿ReentrantLock。ReentrantLock是在jdk 1.5版本后引入的juc包中一个比较重要的工具类，由著名的并发大师Doug Lea编写；接下来就让我们一起来学习一下它吧。
-AQS在学习ReentrantLock之前，我们必须先学下......
+      线程池如果我们每一次处理任务都去创建一个线程去处理，这样会很耗费服务器性能。因为线程的创建销毁，线程的切换都是比较耗费性能的操作。所以为了使线程复用，即一个线程去处理多个任务，便产生了线程池。线程池其实是属于并发编程的一种设计模式，它有许多不同的实现。而在Java中，使用较多的线程池有固定大小线程池newFixedThreadPool，缓冲线程池newCachedThreadPool，定时任......
     </div>
   </a>
   
@@ -685,6 +685,10 @@ AQS在学习ReentrantLock之前，我们必须先学下......
   <div class="tags">
     
     
+    <a href="/tags/#Leetcode" title="Leetcode" rel="1">Leetcode</a>
+    
+    
+    
     <a href="/tags/#Netty" title="Netty" rel="1">Netty</a>
     
     
@@ -702,10 +706,6 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     
     
     <a href="/tags/#Mysql" title="Mysql" rel="1">Mysql</a>
-    
-    
-    
-    <a href="/tags/#Leetcode" title="Leetcode" rel="1">Leetcode</a>
     
     
   </div>
@@ -822,6 +822,10 @@ AQS在学习ReentrantLock之前，我们必须先学下......
 <div class="widget">
   <ul>
     
+    <a href="/categories/#Leetcode">
+      <li>Leetcode</li>
+    </a>
+    
     <a href="/categories/#Java网络编程">
       <li>Java网络编程</li>
     </a>
@@ -836,10 +840,6 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     
     <a href="/categories/#MySql">
       <li>MySql</li>
-    </a>
-    
-    <a href="/categories/#Leetcode">
-      <li>Leetcode</li>
     </a>
     
   </ul>
