@@ -133,10 +133,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="fudada.fun/2020/12/07/计算机网络知识笔记/">
+  <link rel="canonical" href="fudada.fun/2020/12/07/TCP的重要知识/">
   <title>
     
-    TCP - Fudada&#39;s place
+    TCP的重要知识点 - Fudada&#39;s place
     
   </title>
 <meta name="generator" content="Hexo 4.2.1"></head>
@@ -320,7 +320,7 @@
               <a class="tag" href="/tags/#TCP" title="TCP">TCP</a>
               
             </div>
-            <h1>TCP</h1>
+            <h1>TCP的重要知识点</h1>
             <h2 class="subheading">对谢希仁版的计算机网络里的TCP进行知识点复习</h2>
             <span class="meta">
               Posted by Fudada on
@@ -332,11 +332,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">1</span> Minutes
+              Estimated Reading Time <span class="post-count">6</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">27</span> In Total
+              Words <span class="post-count">1.9k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -396,7 +396,61 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="TCP的重要知识"><a href="#TCP的重要知识" class="headerlink" title="TCP的重要知识"></a>TCP的重要知识</h1><h3 id="为什么有运输层？"><a href="#为什么有运输层？" class="headerlink" title="为什么有运输层？"></a>为什么有运输层？</h3><p>从IP层来说，通信的两端是计算机，</p>
+        <h1 id="TCP的重要知识点"><a href="#TCP的重要知识点" class="headerlink" title="TCP的重要知识点"></a>TCP的重要知识点</h1><h3 id="运输层协议概述"><a href="#运输层协议概述" class="headerlink" title="运输层协议概述"></a>运输层协议概述</h3><p>从IP层来说，通信的两端是两台计算机，IP数据报的首部明确标志了两台主机的IP地址。但即使是这样的说法还不够具体，<strong>更确切的说，应该是主机上中的进程在进行通信</strong>。就像我们寄快递一样，我们写上了具体地址还不够准切和清楚是寄给谁，而还应该更准确的写上具体的收件人。而我们把收件人进行类比，也就是主机上的进程。而<strong>在运输层中的端到端通信，往往是把更底层的过程例如IP的路经选择等进行抽象成是只有这两端是沿水平直接传送数据，我们把这抽象过程称作“逻辑通信”。</strong></p>
+<p><img src="https://i.loli.net/2020/12/12/slIzuwrhCjPHFSB.png" alt="image-20201212214927735"></p>
+<p>运输层还有两个重要的功能就是复用和分用，这是什么意思呢？<strong>复用是指应用层所有的应用进程都可以通过运输层再传送到IP层，而分用是指运输层从IP层收到发送给个应用进程的数据后，必须分别交付指明的各应用进程，这就是分用</strong>。就有点类似于学校的快递中心，我们的快递都要通过快递中心寄出去，这就是快递中心的复用；而快递中心收到的快递，需要分别发送给具体的收件人，这就是快递中心的分用。<strong>运输层两个主要协议分别是用户数据报协议UDP和传输控制TCP</strong>。</p>
+<h3 id="TCP概述"><a href="#TCP概述" class="headerlink" title="TCP概述"></a>TCP概述</h3><p>TCP最主要的特点有如下，我们分别一一列举出来。</p>
+<ul>
+<li><p>TCP是面向连接的运输层协议。意味着应用程序在使用TCP协议之前，必须先建立<br>TCP连接，在使用完TCP后则必须释放连接。即我们和某个人打电话类似</p>
+</li>
+<li><p>每一条TCP连接只能有两个端点，和UDP不同，TCP是点对点的（一对一的）</p>
+</li>
+<li><p>TCP提供可靠交付的服务，即通过TCP传送的数据是无差错的，不丢失的，不重复，并且按序到达</p>
+</li>
+<li><p>TCP提供全双工通信，即TCP允许通信双方的应用进程在任何时候都能发送数据。TCP连接的两端都设有发送缓存和接受缓存，用来临时存放双向通信的数据。在发送时，应用程序在把数据传送给TCP的缓存后，就可以做自己的事，而TCP在合适的时候把数据发送出去。在接受时，TCP把收到的数据放入缓存，上层应用在合适的时候读取缓存。</p>
+</li>
+<li><p>TCP是面向字节流对上层交付的数据进行读写的。</p>
+<p><img src="https://i.loli.net/2020/12/12/Ydx5Phkf6ZsRaWj.png" alt="image-20201212221144994"></p>
+</li>
+</ul>
+<h4 id="套接字"><a href="#套接字" class="headerlink" title="套接字"></a>套接字</h4><p>前面提到每一个TCP连接都有两个端点，而这个端点就叫做套接字（Socket）或插口。而套接字就是如下</p>
+<p><img src="https://i.loli.net/2020/12/12/eFokypPRYJ57IKr.png" alt="image-20201212221437779"></p>
+<h4 id="可靠传输的工作原理"><a href="#可靠传输的工作原理" class="headerlink" title="可靠传输的工作原理"></a>可靠传输的工作原理</h4><p>我们知道，TCP发送的报文段是交给IP层传送的，但IP层只能提供尽最大努力服务，也就是说，TCP下面的网络所提供的是不可靠传输，而TCP必须采取适当的措施才能使得两个传输层之间的通信变得可靠。</p>
+<p>理想的传输条件有下面两个特点：</p>
+<ol>
+<li>传输信道不产生差错</li>
+<li>不管发送以多快的速度发送数据，接收放总是来得及处理收到的数据。</li>
+</ol>
+<p><strong>停止等待协议</strong></p>
+<p>为了便于理解可靠传输的工作原理，我们先讲一下什么是停止等待协议。全双工通信的双方既是发送方也是接受方。<strong>“停止等待”就是每发送完一个分组就停止发送，等待对方的确认。在收到确认后再发送下一个分组。</strong>我们假设A发送方发送数据给B接受方。</p>
+<ol>
+<li><p>无差错的情况</p>
+<p>即A发送分组M1，发送完就暂停发送，等待B的确认。B收到M1就向A发送确认。A在收到了对M1的确认后，就再发送下一个分组M2，如此反复。</p>
+<p><img src="https://i.loli.net/2020/12/12/M3TDzBKXn4NbgfF.png" alt="image-20201212222701714"></p>
+</li>
+<li><p>超时重传</p>
+<p>在A发送有差错的分组M1，B接受M1时检测出了差错，然后丢弃M1,亦或者M1在发送途中丢失了，但此时B并不会发送确认给A。可靠性传输协议是这样设计的：A只要超过了一段时间任然没有收到确认，就会认为刚才发送的分组丢失了，因为重传前面发送过的分组。这就叫做超时重传。要实现超时重传，就要在每发送完一个分组时设置一个超时计时器，只要在B在超时前发回确认，超时计时器就会撤销，但每一次发送，都会设置一个超时计时器。这里需要注意几点</p>
+<ul>
+<li>第一，A要暂时保存M1副本，以便发生重传时使用</li>
+<li>第二，分组和确认分组都必须编号，这样才知道哪个分组是发出去了，哪个是失败了</li>
+<li>第三，超时计时器设置的重传时间应当比数据在分组传输的平均往返时间更长一些。如果重传时间设置的过长，那么在发生重传时需要等待的时间过长，这样通信的效率就会很低。但如果过短，就会导致一些明明可以到达的，但超时时间过短而不得不又重传，产生了这些不必要的重传会浪费网络资源。</li>
+</ul>
+<p><img src="https://i.loli.net/2020/12/12/vEGzSOxcUykaKAg.png" alt="image-20201212223015941"></p>
+<p>3.确认丢失和确认迟到</p>
+<p>确认丢失</p>
+<p>这种情况就是B所发送的对M1的确认丢失了，A在设定的超时重传时间内没有收到确认，但又不知道是否是自己发送到分组出错，丢失，或者是B发送的确认丢失了。因此A在超时计时器到期后又重传M1，此时假如B能正常收到重传后的M1，那么它应该会有两个动作</p>
+<ul>
+<li>第一，丢弃这个重复的M1</li>
+<li>第二，重新发送确认，因为A之所以重传M1就表示没有收到对M1的确认</li>
+</ul>
+<p><img src="https://i.loli.net/2020/12/13/HWndorEaIibFy2w.png" alt="image-20201212235754288"></p>
+</li>
+</ol>
+<p>确认迟到</p>
+<p>这种情况即A会发送重复的M1，但由于B的确认迟到了，导致B收到重复的M1且不得不再次发送重复的确认，此时的A的动作是收下重复的确认后便丢弃即可。</p>
+<p><img src="https://i.loli.net/2020/12/13/gB24pUe1L97WTXj.png" alt="image-20201213000228610"></p>
+<p>使用上述的确认和重传机制，我们就可以在不可靠的传输网络上实现可靠的通信。像上述的这种可靠传输协议常称为自动重传请求ARQ。但值得我们注意的是，运输层是不会使用停止等待协议的，因为它虽然简单，但缺点也显而易见便是信道利用率太低了。就像我们日常打电话时，没必要说每句话都得等到对方回复确认再说下句话一样。为了提高传输效率，发送方可以不使用低效率的停止等待协议，而是采用流水线传输，流水线传输就是发送方可以连续发送多个分组，不必每发送完一个分组就停顿下来等待对方确认。</p>
+<p><strong>连续的ARQ协议</strong></p>
 
 
         <hr>
@@ -448,7 +502,7 @@
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=TCP&body=Hi,I found this website and thought you might like it fudada.fun/2020/12/07/计算机网络知识笔记/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=TCP的重要知识点&body=Hi,I found this website and thought you might like it fudada.fun/2020/12/07/TCP的重要知识/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -488,7 +542,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#TCP的重要知识"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">TCP的重要知识</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#为什么有运输层？"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">为什么有运输层？</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#TCP的重要知识点"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">TCP的重要知识点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#运输层协议概述"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">运输层协议概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TCP概述"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">TCP概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#套接字"><span class="toc-nav-number">1.0.2.1.</span> <span class="toc-nav-text">套接字</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#可靠传输的工作原理"><span class="toc-nav-number">1.0.2.2.</span> <span class="toc-nav-text">可靠传输的工作原理</span></a></li></ol></li></ol></li></ol></li></ol>
         
         </div>
       </aside>

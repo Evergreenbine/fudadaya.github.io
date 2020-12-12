@@ -430,16 +430,15 @@ Reactor模式
   
 
 
-  <a href="/2020/12/07/计算机网络知识笔记/">
+  <a href="/2020/12/07/TCP的重要知识/">
     <h2 class="post-title">
-      TCP
+      TCP的重要知识点
     </h2>
     <h3 class="post-subtitle">
       对谢希仁版的计算机网络里的TCP进行知识点复习
     </h3>
     <div class="post-content-preview">
-      TCP的重要知识为什么有运输层？从IP层来说，通信的两端是计算机，
-...
+      TCP的重要知识点运输层协议概述从IP层来说，通信的两端是两台计算机，IP数据报的首部明确标志了两台主机的IP地址。但即使是这样的说法还不够具体，更确切的说，应该是主机上中的进程在进行通信。就像我们寄快递一样，我们写上了具体地址还不够准切和清楚是寄给谁，而还应该更准确的写上具体的收件人。而我们把收件人进行类比，也就是主机上的进程。而在运输层中的端到端通信，往往是把更底层的过程例如IP的路经选......
     </div>
   </a>
   
@@ -485,6 +484,47 @@ Reactor模式
   <div class="tags">
     
     <a href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+
+  <a href="/2020/12/03/Explain查询计划的使用/">
+    <h2 class="post-title">
+      Explain查询计划的使用
+    </h2>
+    <h3 class="post-subtitle">
+      主要介绍explain查询计划的使用和索引失效的情况
+    </h3>
+    <div class="post-content-preview">
+      explain查询计划的使用查询计划是用作分析sql语句执行情况的一个工具，通过这些执行情况，我们可以粗略的知道这条sql语句的执行时做了些啥事情，比如说是否走了索引，使用了哪些索引健，是否产生了文件排序等等。
+组成结构
+我们一起来讨论一下这些字段分别是什么意思。
+
+索引失效
+全值匹配是最好的，即所有查询的都是索引列
+最佳左前缀法则,即加入有这样的索引（age,name,gender),我们......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by Fudada on
+    2020-12-03
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#Mysql" title="Mysql">Mysql</a>
     
   </div>
   
@@ -703,6 +743,10 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     <a href="/tags/#TCP" title="TCP" rel="1">TCP</a>
     
     
+    
+    <a href="/tags/#Mysql" title="Mysql" rel="1">Mysql</a>
+    
+    
   </div>
 </section>
 
@@ -763,12 +807,16 @@ AQS在学习ReentrantLock之前，我们必须先学下......
 <div class="widget">
   <ul>
     
-    <a href="2020/12/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/">
-      <li>TCP</li>
+    <a href="2020/12/07/TCP%E7%9A%84%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86/">
+      <li>TCP的重要知识点</li>
     </a>
     
     <a href="2020/12/07/LeetCode%E9%A2%98%E7%9B%AE%E7%A7%AF%E7%B4%AF/">
       <li>LeetCode题目积累</li>
+    </a>
+    
+    <a href="2020/12/03/Explain%E6%9F%A5%E8%AF%A2%E8%AE%A1%E5%88%92%E7%9A%84%E4%BD%BF%E7%94%A8/">
+      <li>Explain查询计划的使用</li>
     </a>
     
     <a href="2020/11/28/Netty%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
@@ -777,10 +825,6 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     
     <a href="2020/11/27/Selector/">
       <li>Selector的基本原理和使用</li>
-    </a>
-    
-    <a href="2020/11/26/Hashmap1.7/">
-      <li>Hashmap 1.7源码解析</li>
     </a>
     
   </ul>
@@ -804,7 +848,7 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     <!-- <h5>ARCHIVES</h5> -->
     <h5><a href="/archives/">ARCHIVES</a></h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/12/">December 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/11/">November 2020</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/12/">December 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/11/">November 2020</a><span class="archive-list-count">5</span></li></ul>
     </div>
 
 
@@ -835,6 +879,10 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     
     <a href="/categories/#计算机基础知识">
       <li>计算机基础知识</li>
+    </a>
+    
+    <a href="/categories/#MySql">
+      <li>MySql</li>
     </a>
     
   </ul>
