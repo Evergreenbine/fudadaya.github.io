@@ -332,11 +332,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">6</span> Minutes
+              Estimated Reading Time <span class="post-count">7</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.9k</span> In Total
+              Words <span class="post-count">2.2k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -449,8 +449,12 @@
 <p>确认迟到</p>
 <p>这种情况即A会发送重复的M1，但由于B的确认迟到了，导致B收到重复的M1且不得不再次发送重复的确认，此时的A的动作是收下重复的确认后便丢弃即可。</p>
 <p><img src="https://i.loli.net/2020/12/13/gB24pUe1L97WTXj.png" alt="image-20201213000228610"></p>
-<p>使用上述的确认和重传机制，我们就可以在不可靠的传输网络上实现可靠的通信。像上述的这种可靠传输协议常称为自动重传请求ARQ。但值得我们注意的是，运输层是不会使用停止等待协议的，因为它虽然简单，但缺点也显而易见便是信道利用率太低了。就像我们日常打电话时，没必要说每句话都得等到对方回复确认再说下句话一样。为了提高传输效率，发送方可以不使用低效率的停止等待协议，而是采用流水线传输，流水线传输就是发送方可以连续发送多个分组，不必每发送完一个分组就停顿下来等待对方确认。</p>
+<p>使用上述的确认和重传机制，我们就可以在不可靠的传输网络上实现可靠的通信。像上述的这种可靠传输协议常称为自动重传请求ARQ。但值得我们注意的是，运输层是不会使用停止等待协议的，因为它虽然简单，但缺点也显而易见便是信道利用率太低了。就像我们日常打电话时，没必要说每句话都得等到对方回复确认再说下句话一样。为了提高传输效率，发送方可以不使用低效率的停止等待协议，而是<strong>采用流水线传输，流水线传输就是发送方可以连续发送多个分组，不必每发送完一个分组就停顿下来等待对方确认</strong>。</p>
 <p><strong>连续的ARQ协议</strong></p>
+<p>滑动串口协议比较复杂，我们先给出连续ARQ协议最基本的概念，但不会设计许多细节问题。</p>
+<p><img src="https://i.loli.net/2020/12/13/kR5MNgKItOxB6E2.png" alt="image-20201213002547818"></p>
+<p>连续ARQ协议规定，发送方每收到一个确认，就把发送窗口向前滑动一个分组位置。而接受收放一半都是<strong>采用累计确认的方式，这也就是说接收方不必对收到的分组逐个发送确认</strong>，而是在收到几个分组后，<strong>对按序到达的最后一个分组发送确认，这也表示，到这个分组为止的所有分组都已经正确收到了</strong>。而如果发生如下情况，比如上述b图，5、6分组都收到了，而3因为网络原因没有收到。接收方也只能发送2确认，并再让发送方重传，这叫做Go-back-N机制，表示需要再退回来重传已发送过的N个分组。可见当通信线路质量不好时，连续ARQ协议会带来负面的影响。</p>
+<h4 id="TCP报文段的首部格式"><a href="#TCP报文段的首部格式" class="headerlink" title="TCP报文段的首部格式"></a>TCP报文段的首部格式</h4><p><img src="https://i.loli.net/2020/12/13/f6i7TszMWLvICHd.png" alt="image-20201213003354535"></p>
 
 
         <hr>
@@ -542,7 +546,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#TCP的重要知识点"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">TCP的重要知识点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#运输层协议概述"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">运输层协议概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TCP概述"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">TCP概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#套接字"><span class="toc-nav-number">1.0.2.1.</span> <span class="toc-nav-text">套接字</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#可靠传输的工作原理"><span class="toc-nav-number">1.0.2.2.</span> <span class="toc-nav-text">可靠传输的工作原理</span></a></li></ol></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#TCP的重要知识点"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">TCP的重要知识点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#运输层协议概述"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">运输层协议概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TCP概述"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">TCP概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#套接字"><span class="toc-nav-number">1.0.2.1.</span> <span class="toc-nav-text">套接字</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#可靠传输的工作原理"><span class="toc-nav-number">1.0.2.2.</span> <span class="toc-nav-text">可靠传输的工作原理</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#TCP报文段的首部格式"><span class="toc-nav-number">1.0.2.3.</span> <span class="toc-nav-text">TCP报文段的首部格式</span></a></li></ol></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
