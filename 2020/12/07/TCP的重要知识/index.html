@@ -305,7 +305,7 @@
 
     
       #signature {/*signature*/
-        background-image: url('/img/signature/vincent-white.png');
+        background-image: url('/img/signature/fudada.png');
       }
     
   </style>
@@ -343,7 +343,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">3.7k</span> In Total
+              Words <span class="post-count">3.8k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -503,8 +503,9 @@
 <p>发送窗口表示：在没有收到B的确认情况下，A可以连续把窗口内的数据都发送出去。凡是发送过的数据，在没有收到确认之前都必须暂时保留，以便在超时重传使用。</p>
 <p>发送窗口里面的序号表示允许发送的序号。接收方会把自己的接受窗口数值放在窗口字段中发送给对方。因此,A的发送窗口一定不能超过B的接受窗口数值。</p>
 <p>发送窗口后沿的后面部分表示已发送且已收到了确认，这些数据不需要再保留。</p>
-<p>发送窗口由窗口前沿和后沿的位置共同确定。</p>
-<p>发送窗口</p>
+<p>发送窗口的位置由窗口前沿和后沿的位置共同确定。</p>
+<p>发送窗口的前沿也有可能向后收缩，但TCP的标准强烈不赞成这么做，因为在发送方收到窗口调整通知前可能已经发送了大量数据，现在又收缩了窗口，不让发送这些数据，这样会导致一些错误发生。</p>
+<p><img src="https://i.loli.net/2020/12/13/q876F1Rdn3OUy4a.png" alt="image-20201213201101154"></p>
 </li>
 </ul>
 
