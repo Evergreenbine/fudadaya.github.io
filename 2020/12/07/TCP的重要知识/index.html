@@ -212,14 +212,14 @@
 
           
           <li>
-            <a href="/about/">About</a>
+            <a href="/categories/">Categories</a>
           </li>
           
           
 
           
           <li>
-            <a href="/categories/">Categories</a>
+            <a href="/tags/">Tags</a>
           </li>
           
           
@@ -233,7 +233,7 @@
 
           
           <li>
-            <a href="/tags/">Tags</a>
+            <a href="/about/">About</a>
           </li>
           
           
@@ -332,11 +332,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">7</span> Minutes
+              Estimated Reading Time <span class="post-count">12</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">2.2k</span> In Total
+              Words <span class="post-count">3.7k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -455,11 +455,60 @@
 <p><img src="https://i.loli.net/2020/12/13/kR5MNgKItOxB6E2.png" alt="image-20201213002547818"></p>
 <p>连续ARQ协议规定，发送方每收到一个确认，就把发送窗口向前滑动一个分组位置。而接受收放一半都是<strong>采用累计确认的方式，这也就是说接收方不必对收到的分组逐个发送确认</strong>，而是在收到几个分组后，<strong>对按序到达的最后一个分组发送确认，这也表示，到这个分组为止的所有分组都已经正确收到了</strong>。而如果发生如下情况，比如上述b图，5、6分组都收到了，而3因为网络原因没有收到。接收方也只能发送2确认，并再让发送方重传，这叫做Go-back-N机制，表示需要再退回来重传已发送过的N个分组。可见当通信线路质量不好时，连续ARQ协议会带来负面的影响。</p>
 <h4 id="TCP报文段的首部格式"><a href="#TCP报文段的首部格式" class="headerlink" title="TCP报文段的首部格式"></a>TCP报文段的首部格式</h4><p><img src="https://i.loli.net/2020/12/13/f6i7TszMWLvICHd.png" alt="image-20201213003354535"></p>
+<p>上图是TCP首部的格式，总共占20个字节。下面我们来对它的各个字段进行学习。</p>
+<ul>
+<li><p><strong>源端口和目的端口</strong>（总共4字节，各占2个字节）</p>
+</li>
+<li><p><strong>序号</strong>（占4个字节）：序号的范围是[0, 2^32-1]。只要序号增加到2^32 - 1后，下一个序号就又回到 0。TCP是面向字节流的。在一个TCP连接中传送的字节流中的每一个字节都按顺序编号。整个要传送的字节流的起始序号必须在连接建立时设置。首部中的序号字段值则指的是本报文段所发送的数据的一个字节的序号。举个例子来说，一报文段的序号字段值是301，而携带的数据共有100字节。则说明报文段的数据的第一个子节的序号是301，最后一个字节的序号是300。下一个报文段（如果还有的话）则从401开始。这个字段的名称也叫作“报文段序号”</p>
+</li>
+<li><p><strong>确认号</strong>（占4个字节），是期望收到对方下一个报文段的第一个数据字节的序号。应当记住：</p>
+<p><strong>若确认号 = N，则表明：到序号N-1为止的所有数据都已经正确收到。</strong></p>
+</li>
+<li><p><strong>数据偏移</strong>（占4个位，半个字节），它指出TCP报文段的数据起始处距离TCP报文段的起始处有多远。即第一个数据是在第几个字节开始的，因为TCP首部的长度不是固定为20字节的，也可以理解为TCP报文段的首部长度。</p>
+</li>
+<li><p><strong>保留</strong>（占6位），保留为今后使用，但目前应设置为0</p>
+</li>
+<li><p><strong>紧急URG</strong>，当URG=1时，表明紧急指针字段有效。它告诉系统此报文段中有紧急数据，应尽快传送，而不要按原来的排队顺序来传送。</p>
+</li>
+<li><p><strong>确认ACK</strong>，仅当ACK=1时确认号字段才有效。当ACK=0时，确认号无效。TCP规定，在连接建立后所有传送的报文段都必须把ACK设置为1。</p>
+</li>
+<li><p><strong>推送PSH</strong>,我们知道TCP两端设置有缓存，如发送方的发送缓存和接受缓存。有时在一端的应用进程希望在键入一个命令后立即就能够收到对方的响应。这时只要发送方将PSH设置为1，并立即创建一个报文段发送出去。接收方收到这个PSH=1的报文段，就会尽快地的交给接受应用进程，而不是等到整个接受缓存满了再交付，也有点类似于快递里的加急件一样。</p>
+</li>
+<li><p><strong>复位RST</strong>，当RST=1时，表明TCP连接中出现严重的差错，必须释放连接，然后再重新建立运输连接。RST置1还用来拒绝一个非法报文段或拒绝打开一个连接。RST也可称为重建为或重置位。</p>
+</li>
+<li><p><strong>同步SYN</strong>，在连接建立时用来同步序号。当SYN=1而ACK=0时，表明这是一个连接请求报文段，对方若同意建立连接，则应在响应报文段中使SYN=1和ACK=1。因此，SYN设置为1就表示这是一个连接请求或连接接受报文。</p>
+</li>
+<li><p><strong>终止FIN</strong>，用来释放一个连接。当FIN=1时，表明此报文段的发送方的数据已经发送完毕，并要求释放运输连接。</p>
+</li>
+<li><p><strong>窗口</strong>（占2个字节），窗口值是[0,2^16 - 1]之间的整数。窗口指的是发送本报文段的一方的接受窗口（而不是自己的发送窗口）。<strong>窗口值告诉对方：从本报文段首部的确认号算起，接受方目前允许对方发送的数据量（以字节为单位）</strong>。之所以要有个这个限制，是因为接收方的数据缓存空间是有限的。总之，<strong>窗口值作为接收方让发送方设置其发送窗口的依据</strong>。</p>
+</li>
+<li><p><strong>检验和</strong>（占2字节）。检验和字段检验的范围包括首部和数据这两部分。</p>
+</li>
+<li><p><strong>紧急指针</strong>（占2字节）。紧急指针仅在URG = 1时才有意义，它指出本报文段中的紧急数据的字节数。紧急指针指出了紧急数据的末尾在报文段的中的位置。</p>
+</li>
+<li><p><strong>选项</strong>，长度可变，最长可以到40个字节，如果没有使用，TCP的首部长度是20字节。</p>
+<p>TCP最初只规定了一种选项，就是<strong>最大报文段长度MSS</strong>，是指每一个TCP报文段中数据字段的最大长度。TCP首部+数据字段 = 整个TCP报文段。</p>
+<p>另外的还有如<strong>时间戳</strong>、<strong>窗口扩大选项</strong>等等</p>
+<h4 id="TCP可靠传输的实现"><a href="#TCP可靠传输的实现" class="headerlink" title="TCP可靠传输的实现"></a>TCP可靠传输的实现</h4><p>从这小节开始，我们来讨论一下TCP是怎么保证可靠传输的。</p>
+<p><strong>以字节为单位的滑动窗口</strong></p>
+<p>TCP的滑动窗口是以字节位单位的。为了便于说明滑动窗口的工作原理，现假定A收到了B发来的确认报文段，其中窗口是20字节，而确认号是31。根据这两个数据，A就构造出自己的发送窗口。</p>
+<p><img src="https://i.loli.net/2020/12/13/hUxpW5RqM982AzJ.png" alt="image-20201213155318728"></p>
+<p>发送窗口表示：在没有收到B的确认情况下，A可以连续把窗口内的数据都发送出去。凡是发送过的数据，在没有收到确认之前都必须暂时保留，以便在超时重传使用。</p>
+<p>发送窗口里面的序号表示允许发送的序号。接收方会把自己的接受窗口数值放在窗口字段中发送给对方。因此,A的发送窗口一定不能超过B的接受窗口数值。</p>
+<p>发送窗口后沿的后面部分表示已发送且已收到了确认，这些数据不需要再保留。</p>
+<p>发送窗口由窗口前沿和后沿的位置共同确定。</p>
+<p>发送窗口</p>
+</li>
+</ul>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
+          
+          <li class="previous">
+            <a href="/2020/12/13/Java多线程设计模式/" data-toggle="tooltip" data-placement="top" title="Java多线程设计模式">&larr; Previous Post</a>
+          </li>
           
           
           <li class="next">
@@ -546,7 +595,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#TCP的重要知识点"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">TCP的重要知识点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#运输层协议概述"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">运输层协议概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TCP概述"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">TCP概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#套接字"><span class="toc-nav-number">1.0.2.1.</span> <span class="toc-nav-text">套接字</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#可靠传输的工作原理"><span class="toc-nav-number">1.0.2.2.</span> <span class="toc-nav-text">可靠传输的工作原理</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#TCP报文段的首部格式"><span class="toc-nav-number">1.0.2.3.</span> <span class="toc-nav-text">TCP报文段的首部格式</span></a></li></ol></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#TCP的重要知识点"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">TCP的重要知识点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#运输层协议概述"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">运输层协议概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TCP概述"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">TCP概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#套接字"><span class="toc-nav-number">1.0.2.1.</span> <span class="toc-nav-text">套接字</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#可靠传输的工作原理"><span class="toc-nav-number">1.0.2.2.</span> <span class="toc-nav-text">可靠传输的工作原理</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#TCP报文段的首部格式"><span class="toc-nav-number">1.0.2.3.</span> <span class="toc-nav-text">TCP报文段的首部格式</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#TCP可靠传输的实现"><span class="toc-nav-number">1.0.2.4.</span> <span class="toc-nav-text">TCP可靠传输的实现</span></a></li></ol></li></ol></li></ol></li></ol>
         
         </div>
       </aside>

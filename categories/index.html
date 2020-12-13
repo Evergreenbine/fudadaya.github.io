@@ -212,14 +212,14 @@
 
           
           <li>
-            <a href="/about/">About</a>
+            <a href="/categories/">Categories</a>
           </li>
           
           
 
           
           <li>
-            <a href="/categories/">Categories</a>
+            <a href="/tags/">Tags</a>
           </li>
           
           
@@ -233,7 +233,7 @@
 
           
           <li>
-            <a href="/tags/">Tags</a>
+            <a href="/about/">About</a>
           </li>
           
           
@@ -365,21 +365,47 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
-        <a href="#Java基础" title="Java基础" rel="1">Java基础</a>
-        
         <a href="#Leetcode" title="Leetcode" rel="1">Leetcode</a>
         
-        <a href="#Java网络编程" title="Java网络编程" rel="2">Java网络编程</a>
+        <a href="#Java基础" title="Java基础" rel="1">Java基础</a>
         
-        <a href="#JUC" title="JUC" rel="2">JUC</a>
+        <a href="#MySql" title="MySql" rel="1">MySql</a>
         
         <a href="#计算机基础知识" title="计算机基础知识" rel="1">计算机基础知识</a>
         
-        <a href="#MySql" title="MySql" rel="1">MySql</a>
+        <a href="#Java网络编程" title="Java网络编程" rel="2">Java网络编程</a>
+        
+        <a href="#Java多线程" title="Java多线程" rel="3">Java多线程</a>
         
       </div>
 
       <!-- 标签列表 -->
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="Leetcode">
+          <span class="tag-text">Leetcode</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2020/12/07/LeetCode题目积累/">
+            <h2 class="post-title">
+              LeetCode题目积累
+            </h2>
+            
+            <h3 class="post-subtitle">
+              对平时练习的题目进行记录
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
       
       <div class="one-tag-list">
         <span class="fa fa-tag listing-seperator" id="Java基础">
@@ -408,8 +434,8 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Leetcode">
-          <span class="tag-text">Leetcode</span>
+        <span class="fa fa-tag listing-seperator" id="MySql">
+          <span class="tag-text">MySql</span>
         </span>
         
         <!-- <li class="listing-item">
@@ -417,13 +443,39 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2020/12/07/LeetCode题目积累/">
+          <a href="/2020/12/03/Explain查询计划的使用/">
             <h2 class="post-title">
-              LeetCode题目积累
+              Explain查询计划的使用
             </h2>
             
             <h3 class="post-subtitle">
-              对平时练习的题目进行记录
+              主要介绍explain查询计划的使用和索引失效的情况
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="计算机基础知识">
+          <span class="tag-text">计算机基础知识</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2020/12/07/TCP的重要知识/">
+            <h2 class="post-title">
+              TCP的重要知识点
+            </h2>
+            
+            <h3 class="post-subtitle">
+              对谢希仁版的计算机网络里的TCP进行知识点复习
             </h3>
             
           </a>
@@ -479,9 +531,24 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="JUC">
-          <span class="tag-text">JUC</span>
+        <span class="fa fa-tag listing-seperator" id="Java多线程">
+          <span class="tag-text">Java多线程</span>
         </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2020/12/13/Java多线程设计模式/">
+            <h2 class="post-title">
+              Java多线程设计模式
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
         
         <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
@@ -510,58 +577,6 @@
             
             <h3 class="post-subtitle">
               主要介绍固定线程数的线程池的原理
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="计算机基础知识">
-          <span class="tag-text">计算机基础知识</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2020/12/07/TCP的重要知识/">
-            <h2 class="post-title">
-              TCP的重要知识点
-            </h2>
-            
-            <h3 class="post-subtitle">
-              对谢希仁版的计算机网络里的TCP进行知识点复习
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="MySql">
-          <span class="tag-text">MySql</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2020/12/03/Explain查询计划的使用/">
-            <h2 class="post-title">
-              Explain查询计划的使用
-            </h2>
-            
-            <h3 class="post-subtitle">
-              主要介绍explain查询计划的使用和索引失效的情况
             </h3>
             
           </a>
