@@ -2,7 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>fudada.fun/archive/index.html</loc>
+    <loc>fudada.fun/pictures/index.html</loc>
+    
+    <lastmod>2020-12-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>fudada.fun/categories/index.html</loc>
     
     <lastmod>2020-12-13</lastmod>
     
@@ -10,6 +17,13 @@
   
   <url>
     <loc>fudada.fun/mood/index.html</loc>
+    
+    <lastmod>2020-12-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>fudada.fun/archive/index.html</loc>
     
     <lastmod>2020-12-13</lastmod>
     
@@ -79,13 +93,6 @@
   </url>
   
   <url>
-    <loc>fudada.fun/categories/index.html</loc>
-    
-    <lastmod>2020-11-30</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>fudada.fun/404.html</loc>
     
     <lastmod>2020-11-30</lastmod>
@@ -116,14 +123,21 @@
 
   
   <url>
-    <loc>fudada.fun/tags/Leetcode/</loc>
+    <loc>fudada.fun/tags/Collection/</loc>
     <lastmod>2020-12-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>fudada.fun/tags/Collection/</loc>
+    <loc>fudada.fun/tags/Mysql/</loc>
+    <lastmod>2020-12-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>fudada.fun/tags/Leetcode/</loc>
     <lastmod>2020-12-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -151,13 +165,6 @@
   </url>
   
   <url>
-    <loc>fudada.fun/tags/TCP/</loc>
-    <lastmod>2020-12-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>fudada.fun/tags/NIO/</loc>
     <lastmod>2020-12-13</lastmod>
     <changefreq>daily</changefreq>
@@ -165,7 +172,7 @@
   </url>
   
   <url>
-    <loc>fudada.fun/tags/Mysql/</loc>
+    <loc>fudada.fun/tags/TCP/</loc>
     <lastmod>2020-12-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -174,14 +181,21 @@
 
   
   <url>
-    <loc>fudada.fun/categories/Leetcode/</loc>
+    <loc>fudada.fun/categories/Java%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2020-12-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>fudada.fun/categories/Java%E5%9F%BA%E7%A1%80/</loc>
+    <loc>fudada.fun/categories/MySql/</loc>
+    <lastmod>2020-12-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>fudada.fun/categories/Leetcode/</loc>
     <lastmod>2020-12-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -203,13 +217,6 @@
   
   <url>
     <loc>fudada.fun/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
-    <lastmod>2020-12-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>fudada.fun/categories/MySql/</loc>
     <lastmod>2020-12-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

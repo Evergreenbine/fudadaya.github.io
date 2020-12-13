@@ -219,13 +219,6 @@
 
           
           <li>
-            <a href="/categories/">Categories</a>
-          </li>
-          
-          
-
-          
-          <li>
             <a href="/mood/">MOOD</a>
           </li>
           
@@ -234,6 +227,20 @@
           
           <li>
             <a href="/tags/">Tags</a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a href="/categories/">Categories</a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a href="/pictures/">pictures</a>
           </li>
           
           
@@ -365,9 +372,11 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
-        <a href="#Leetcode" title="Leetcode" rel="1">Leetcode</a>
-        
         <a href="#Collection" title="Collection" rel="1">Collection</a>
+        
+        <a href="#Mysql" title="Mysql" rel="1">Mysql</a>
+        
+        <a href="#Leetcode" title="Leetcode" rel="1">Leetcode</a>
         
         <a href="#Java多线程设计模式" title="Java多线程设计模式" rel="1">Java多线程设计模式</a>
         
@@ -375,41 +384,13 @@
         
         <a href="#JUC" title="JUC" rel="2">JUC</a>
         
-        <a href="#TCP" title="TCP" rel="1">TCP</a>
-        
         <a href="#NIO" title="NIO" rel="1">NIO</a>
         
-        <a href="#Mysql" title="Mysql" rel="1">Mysql</a>
+        <a href="#TCP" title="TCP" rel="1">TCP</a>
         
       </div>
 
       <!-- 标签列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Leetcode">
-          <span class="tag-text">Leetcode</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2020/12/07/LeetCode题目积累/">
-            <h2 class="post-title">
-              LeetCode题目积累
-            </h2>
-            
-            <h3 class="post-subtitle">
-              对平时练习的题目进行记录
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
       
       <div class="one-tag-list">
         <span class="fa fa-tag listing-seperator" id="Collection">
@@ -428,6 +409,58 @@
             
             <h3 class="post-subtitle">
               Hashmap1.7重要知识解析
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="Mysql">
+          <span class="tag-text">Mysql</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2020/12/03/Explain查询计划的使用/">
+            <h2 class="post-title">
+              Explain查询计划的使用
+            </h2>
+            
+            <h3 class="post-subtitle">
+              主要介绍explain查询计划的使用和索引失效的情况
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="Leetcode">
+          <span class="tag-text">Leetcode</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2020/12/07/LeetCode题目积累/">
+            <h2 class="post-title">
+              LeetCode题目积累
+            </h2>
+            
+            <h3 class="post-subtitle">
+              对平时练习的题目进行记录
             </h3>
             
           </a>
@@ -527,32 +560,6 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="TCP">
-          <span class="tag-text">TCP</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2020/12/07/TCP的重要知识/">
-            <h2 class="post-title">
-              TCP的重要知识点
-            </h2>
-            
-            <h3 class="post-subtitle">
-              对谢希仁版的计算机网络里的TCP进行知识点复习
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
         <span class="fa fa-tag listing-seperator" id="NIO">
           <span class="tag-text">NIO</span>
         </span>
@@ -579,8 +586,8 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Mysql">
-          <span class="tag-text">Mysql</span>
+        <span class="fa fa-tag listing-seperator" id="TCP">
+          <span class="tag-text">TCP</span>
         </span>
         
         <!-- <li class="listing-item">
@@ -588,13 +595,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2020/12/03/Explain查询计划的使用/">
+          <a href="/2020/12/07/TCP的重要知识/">
             <h2 class="post-title">
-              Explain查询计划的使用
+              TCP的重要知识点
             </h2>
             
             <h3 class="post-subtitle">
-              主要介绍explain查询计划的使用和索引失效的情况
+              对谢希仁版的计算机网络里的TCP进行知识点复习
             </h3>
             
           </a>
