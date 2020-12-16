@@ -130,14 +130,7 @@
 
   
   <url>
-    <loc>fudada.fun/tags/Collection/</loc>
-    <lastmod>2020-12-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>fudada.fun/tags/Mysql/</loc>
+    <loc>fudada.fun/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2020-12-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -151,13 +144,6 @@
   </url>
   
   <url>
-    <loc>fudada.fun/tags/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2020-12-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>fudada.fun/tags/Netty/</loc>
     <lastmod>2020-12-16</lastmod>
     <changefreq>daily</changefreq>
@@ -165,7 +151,14 @@
   </url>
   
   <url>
-    <loc>fudada.fun/tags/JUC/</loc>
+    <loc>fudada.fun/tags/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2020-12-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>fudada.fun/tags/Mysql/</loc>
     <lastmod>2020-12-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -179,7 +172,14 @@
   </url>
   
   <url>
-    <loc>fudada.fun/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <loc>fudada.fun/tags/JUC/</loc>
+    <lastmod>2020-12-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>fudada.fun/tags/Collection/</loc>
     <lastmod>2020-12-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -188,14 +188,7 @@
 
   
   <url>
-    <loc>fudada.fun/categories/Java%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2020-12-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>fudada.fun/categories/MySql/</loc>
+    <loc>fudada.fun/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2020-12-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -209,13 +202,6 @@
   </url>
   
   <url>
-    <loc>fudada.fun/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-    <lastmod>2020-12-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>fudada.fun/categories/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2020-12-16</lastmod>
     <changefreq>daily</changefreq>
@@ -223,7 +209,21 @@
   </url>
   
   <url>
-    <loc>fudada.fun/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    <loc>fudada.fun/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <lastmod>2020-12-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>fudada.fun/categories/MySql/</loc>
+    <lastmod>2020-12-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>fudada.fun/categories/Java%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2020-12-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
