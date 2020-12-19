@@ -71,12 +71,12 @@
 
   <!-- Pygments Highlight CSS -->
   
-<link rel="stylesheet" href="../../css/highlight.css">
-<link rel="stylesheet" href="../../css/widget.css">
-<link rel="stylesheet" href="../../css/rocket.css">
-<link rel="stylesheet" href="../../css/signature.css">
-<link rel="stylesheet" href="../../css/catalog.css">
-<link rel="stylesheet" href="../../css/livemylife.css">
+<link rel="stylesheet" href="../../../../css/highlight.css">
+<link rel="stylesheet" href="../../../../css/widget.css">
+<link rel="stylesheet" href="../../../../css/rocket.css">
+<link rel="stylesheet" href="../../../../css/signature.css">
+<link rel="stylesheet" href="../../../../css/catalog.css">
+<link rel="stylesheet" href="../../../../css/livemylife.css">
 
 
   
@@ -133,10 +133,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="fudada.fun/tags/JUC/">
+  <link rel="canonical" href="fudada.fun/2020/12/19/Java注解/">
   <title>
     
-    Fudada&#39;s place
+    Java注解 - Fudada&#39;s place
     
   </title>
 <meta name="generator" content="Hexo 4.2.1"></head>
@@ -298,8 +298,8 @@
 
   <style type="text/css">
     header.intro-header {
-       /*page*/
-        background-image: url('/img/header_img/archive_bg2.jpg');
+       /*post*/
+        background-image: url('/img/post/09head.jpg');
       
     }
 
@@ -321,10 +321,40 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>Fudada</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">让自己快乐快乐才叫做意义</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#java高级特性" title="java高级特性">java高级特性</a>
+              
+            </div>
+            <h1>Java注解</h1>
+            <h2 class="subheading">Java注解的基本使用</h2>
+            <span class="meta">
+              Posted by Fudada on
+              2020-12-19
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">3</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">863</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- 不蒜子统计 start -->
+            <span class="meta">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            <!-- WordCount end -->
+            
+
+
           </div>
           
         </div>
@@ -365,435 +395,232 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-	<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
+	<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+        <h1 id="Java注解的基本使用"><a href="#Java注解的基本使用" class="headerlink" title="Java注解的基本使用"></a>Java注解的基本使用</h1><p>从JDK5开始，Java增加了对Annotation的支持，就是注解。那注解是什么呢？我们可以理解为一个标记，用来添加一些额外的辅助信息。不同于注释的是，注释是会被编译器忽略，但注释可以在编译，类加载，运行时被读取，执行相应的处理。</p>
+<h3 id="内置注解"><a href="#内置注解" class="headerlink" title="内置注解"></a>内置注解</h3><p>Java中有5个基本的内置注解</p>
+<ul>
+<li><code>@Override</code>: 代表这是一个重写的方法</li>
+<li><code>@Deprecated</code>: 定义在java.lang.Deprecated中，此注释可以用于修辞方法，属性，类，表示不鼓励程序员使用这一的元素，或者有更好的代替，就平常会遇到一些方法有横线划过去，就是加了这个注解。</li>
+<li><code>@SuperpressWarning</code>: 压制警告，有些方法或者变量会报一些警告，加上这个注解，则会抑制编译时的警告信息</li>
+<li><code>@SafeVarargs</code>:  主要目的是处理可变长参数中的泛型，此注解告诉编译器：在可变长参数中的泛型是类型安全的。可变长参数是使用数组存储的，而数组和泛型不能很好的混合使用</li>
+<li><code>@FunctionalInterface</code>: 代表这是一个函数式接口</li>
+</ul>
+<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p>元注解的作用就是负责注解其它的注解，java中定义了4个标准的元注解类型</p>
+<ul>
+<li><p><code>@Target</code>：用于描述注解的使用范围，比如说定义在方法上，定义在类上</p>
+</li>
+<li><p><code>@Retention</code>：表示需要在什么级别中保存该注释信息，用于描述注解的在什么时期生效</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> RetentionPolicy &#123;</span><br><span class="line">    <span class="comment">/* 表示这在源码是生效，即.java文件中才生效，其它就生效了*/</span></span><br><span class="line">    SOURCE,</span><br><span class="line">    <span class="comment">/* 表示这在.class文件中生效，载入内存后就不生效了*/</span></span><br><span class="line">    CLASS,</span><br><span class="line">    <span class="comment">/* 表示这是在运行时生效*/</span></span><br><span class="line">    RUNTIME</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
+<p>它们描述的时期范围包含是 <code>RUNTIME &gt; CLASS &gt; SOURCE</code>,即RUNTIME生效即表明他在SOURCE生效。</p>
+<ul>
+<li><p><code>@DOCUMENT</code>：说明该注解将被包含在javadoc中</p>
+</li>
+<li><p><code>@Inherited</code>：说明子类可以继承父类中的注解</p>
+</li>
+</ul>
+<h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p>我们来尝试自定义自己的注解，注解的参数类型有固定的格式，即 参数类型 ：参数名（）。如果不为参数指定默认值，则一定得赋值。比如说我们定义一个Bean注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@interface</span> Bean &#123;</span><br><span class="line">	<span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
+<p>像上面我们定义的一个Bean，那么如果在Spring中，它就会解析注解拿到Bean的名字，将这个辅助信息放到BeanDefinition中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span>(name = <span class="string">"doramon"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">getPerson</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Student();</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <!-- 归档列表 -->
+<p>这样一看，是不是有点那么点味道了哈哈。我们下面再定义一个注解，用来标注一个人的辅助信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@interface</span> Human&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">    String[] alias();</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">age</span><span class="params">()</span> <span class="keyword">default</span> 0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Human</span>(name =<span class="string">"多啦a梦"</span>,alias = &#123;<span class="string">"蓝胖子"</span>&#125;,age = <span class="number">10</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    String[] alias;</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-          <span class="tag-text">2020</span>
-        </span>
-        <ul>
+<h3 id="使用反射获取注解信息"><a href="#使用反射获取注解信息" class="headerlink" title="使用反射获取注解信息"></a>使用反射获取注解信息</h3><p>我们使用反射解析注解，并获取注解的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 获取注解的基本方法*/</span></span><br><span class="line"><span class="comment">/* 获取CLass对象*/</span></span><br><span class="line">Class person = Person<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 获取Class对象的注解的字段值*/</span></span><br><span class="line">Human annotation = (Human)person.getAnnotation(Human<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">String name = annotation.name();</span><br><span class="line"><span class="keyword">int</span> age = annotation.age();</span><br><span class="line">String[] alias = annotation.alias();</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 获取Person类的所有注解*/</span></span><br><span class="line">Annotation[] annotations = person.getAnnotations();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (Annotation a : annotations) &#123;</span><br><span class="line">    System.out.println(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结尾语"><a href="#结尾语" class="headerlink" title="结尾语"></a>结尾语</h3><p>上面就是注解的基本使用辣，挺简单的是不是？</p>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
           
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            12-19
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/12/19/Java注解/" style="color: #0085a1">
-              <span>
-                Java注解
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
           
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            12-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/12/14/HTTP的重要知识/" style="color: #0085a1">
-              <span>
-                HTTP的重要知识
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            12-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/12/13/Java多线程设计模式/" style="color: #0085a1">
-              <span>
-                Java多线程设计模式
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            12-07
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/12/07/TCP的重要知识/" style="color: #0085a1">
-              <span>
-                TCP的重要知识点
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            12-07
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/12/07/LeetCode题目积累/" style="color: #0085a1">
-              <span>
-                LeetCode题目积累
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            12-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/12/03/Explain查询计划的使用/" style="color: #0085a1">
-              <span>
-                Explain查询计划的使用
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            11-28
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/11/28/Netty的基本使用/" style="color: #0085a1">
-              <span>
-                Netty的基本使用
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            11-27
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/11/27/Selector/" style="color: #0085a1">
-              <span>
-                Selector的基本原理和使用
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            11-26
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/11/26/Hashmap1.7/" style="color: #0085a1">
-              <span>
-                Hashmap 1.7源码解析
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            11-26
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/11/26/ThreadPool/" style="color: #0085a1">
-              <span>
-                线程池
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            11-26
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/11/26/ReentrantLock/" style="color: #0085a1">
-              <span>
-                ReentrantLock
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          <li class="next">
+            <a href="/2020/12/14/HTTP的重要知识/" data-toggle="tooltip" data-placement="top" title="HTTP的重要知识">Next Post &rarr;</a>
           </li>
           
         </ul>
+
+        
+        <!-- tip start -->
+        <div class="tip">
+          <p>
+            If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
+          </p>
+        </div>
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=Java注解&body=Hi,I found this website and thought you might like it fudada.fun/2020/12/19/Java注解/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+
+<!-- 2. gitment comment -->
+
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
       </div>
-      
 
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
 
-    </div>
-  </div>
-</div>
-
-
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
     
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
         
-<!-- <h5>VISITORS</h5> -->
-<h5><a href="/">VISITORS</a></h5>
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java注解的基本使用"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Java注解的基本使用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#内置注解"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">内置注解</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#元注解"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">元注解</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#自定义注解"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">自定义注解</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#使用反射获取注解信息"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">使用反射获取注解信息</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#结尾语"><span class="toc-nav-number">1.0.5.</span> <span class="toc-nav-text">结尾语</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
     
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
         <!-- Featured Tags -->
-
-<section>
-  <!-- no hr -->
-  <h5><a href="/tags/">FEATURED TAGS</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#计算机网络" title="计算机网络" rel="2">计算机网络</a>
-    
-    
-    
-    <a href="/tags/#Leetcode" title="Leetcode" rel="1">Leetcode</a>
-    
-    
-    
-    <a href="/tags/#Netty" title="Netty" rel="1">Netty</a>
-    
-    
-    
-    <a href="/tags/#Java多线程设计模式" title="Java多线程设计模式" rel="1">Java多线程设计模式</a>
-    
-    
-    
-    <a href="/tags/#Mysql" title="Mysql" rel="1">Mysql</a>
-    
-    
-    
-    <a href="/tags/#NIO" title="NIO" rel="1">NIO</a>
-    
-    
-    
-    <a href="/tags/#JUC" title="JUC" rel="2">JUC</a>
-    
-    
-    
-    <a href="/tags/#Collection" title="Collection" rel="1">Collection</a>
-    
-    
-    
-    <a href="/tags/#java高级特性" title="java高级特性" rel="1">java高级特性</a>
-    
-    
-  </div>
-</section>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">ABOUT ME</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/fatpeople.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>哇嘎哒，哇嘎达，分享知识和分享苹果可不一样哟</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/Evergreenbine">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
         
-<!-- <h5>RECENT POSTS</h5> -->
-<h5><a href="/">RECENT POSTS</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../2020/12/19/Java%E6%B3%A8%E8%A7%A3/">
-      <li>Java注解</li>
-    </a>
-    
-    <a href="../../2020/12/14/HTTP%E7%9A%84%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86/">
-      <li>HTTP的重要知识</li>
-    </a>
-    
-    <a href="../../2020/12/13/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-      <li>Java多线程设计模式</li>
-    </a>
-    
-    <a href="../../2020/12/07/TCP%E7%9A%84%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86/">
-      <li>TCP的重要知识点</li>
-    </a>
-    
-    <a href="../../2020/12/07/LeetCode%E9%A2%98%E7%9B%AE%E7%A7%AF%E7%B4%AF/">
-      <li>LeetCode题目积累</li>
-    </a>
-    
-  </ul>
-</div>
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">FEATURED TAGS</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#java高级特性" title="java高级特性">java高级特性</a>
+            
+          </div>
+        </section>
+        
 
-
-        <hr>
-    
         <!-- Friends Blog -->
-
-<!-- <h5>FRIENDS</h5> -->
-<h5><a href="/">FRIENDS</a></h5>
-<ul class="list-inline">
-  
-</ul>
-
-
-        <hr>
-    
         
-    <!-- <h5>ARCHIVES</h5> -->
-    <h5><a href="/archives/">ARCHIVES</a></h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">December 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a><span class="archive-list-count">5</span></li></ul>
+        <hr>
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+
+          
+        </ul>
+        
+      </div>
     </div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<!-- <h5>categories</h5> -->
-<h5><a href="/categories/">CATEGORIES</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#计算机基础知识">
-      <li>计算机基础知识</li>
-    </a>
-    
-    <a href="/categories/#Leetcode">
-      <li>Leetcode</li>
-    </a>
-    
-    <a href="/categories/#Java网络编程">
-      <li>Java网络编程</li>
-    </a>
-    
-    <a href="/categories/#Java多线程">
-      <li>Java多线程</li>
-    </a>
-    
-    <a href="/categories/#MySql">
-      <li>MySql</li>
-    </a>
-    
-    <a href="/categories/#Java基础">
-      <li>Java基础</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-</div>
-
-    
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 	<!-- Footer (contains ThemeColor、viewer) -->
