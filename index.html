@@ -392,6 +392,41 @@
   
 
 
+  <a href="/2020/12/19/网络层协议/">
+    <h2 class="post-title">
+      网络层协议
+    </h2>
+    <h3 class="post-subtitle">
+      学习网络层的协议及作用
+    </h3>
+    <div class="post-content-preview">
+      网络层协议数据链路层上无法实现可靠传输（不重复，不丢失，不失序),因为没有对帧做编号，即也无法检验帧的顺序正确。数据链路层因为是在总线中依靠mac地址去确认对方主机信息，所以也无法实现不同网络段间的通信。主要遗留了两个问题，即无法实现可靠传输，无法跨网路通信。网络层是否能解决数据链路层遗留的问题，又不能解决什么问题？这些都是我们今天需要去学习的内容。网络层主要学习以下内容
+
+网络层提供的两种......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by Fudada on
+    2020-12-19
+  </p>
+  <div class="tags">
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+
   <a href="/2020/12/19/Java注解/">
     <h2 class="post-title">
       Java注解
@@ -548,7 +583,10 @@ Web内容都是存储在Web服务器上的，所使用的是
       对平时练习的题目进行记录
     </h3>
     <div class="post-content-preview">
-      LeetCode面试题目链表...
+      LeetCode面试题目链表
+相交链表（160）
+思路：
+1234567891011121314public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;       if(headA == null || headB == null) return null;              ListNod......
     </div>
   </a>
   
@@ -719,42 +757,6 @@ Reactor模式
 </div>
 <hr>
 
-<div class="post-preview">
-
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-
-  <a href="/2020/11/26/ReentrantLock/">
-    <h2 class="post-title">
-      ReentrantLock
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      ReentrantLock源码解析在java中重入锁有两个，一个是synchronized关键字，是C++实现的，而另外一个就是本篇文章中的主角儿ReentrantLock。ReentrantLock是在jdk 1.5版本后引入的juc包中一个比较重要的工具类，由著名的并发大师Doug Lea编写；接下来就让我们一起来学习一下它吧。
-AQS在学习ReentrantLock之前，我们必须先学下......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Fudada on
-    2020-11-26
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#JUC" title="JUC">JUC</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
 
 
   <!-- Pager -->
@@ -900,6 +902,10 @@ AQS在学习ReentrantLock之前，我们必须先学下......
 <div class="widget">
   <ul>
     
+    <a href="2020/12/19/%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE/">
+      <li>网络层协议</li>
+    </a>
+    
     <a href="2020/12/19/Java%E6%B3%A8%E8%A7%A3/">
       <li>Java注解</li>
     </a>
@@ -914,10 +920,6 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     
     <a href="2020/12/07/TCP%E7%9A%84%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86/">
       <li>TCP的重要知识点</li>
-    </a>
-    
-    <a href="2020/12/07/LeetCode%E9%A2%98%E7%9B%AE%E7%A7%AF%E7%B4%AF/">
-      <li>LeetCode题目积累</li>
     </a>
     
   </ul>
@@ -941,7 +943,7 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     <!-- <h5>ARCHIVES</h5> -->
     <h5><a href="/archives/">ARCHIVES</a></h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/12/">December 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/11/">November 2020</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/12/">December 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/11/">November 2020</a><span class="archive-list-count">5</span></li></ul>
     </div>
 
 
