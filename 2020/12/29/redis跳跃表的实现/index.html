@@ -136,7 +136,7 @@
   <link rel="canonical" href="fudada.fun/2020/12/29/redis跳跃表的实现/">
   <title>
     
-    redis跳跃表的实现 - Fudada&#39;s place
+    Redis跳跃表的实现 - Fudada&#39;s place
     
   </title>
 <meta name="generator" content="Hexo 4.2.1"></head>
@@ -299,7 +299,7 @@
   <style type="text/css">
     header.intro-header {
        /*post*/
-        background-image: url('');
+        background-image: url('/img/post/27head.jpg');
       
     }
 
@@ -324,9 +324,11 @@
           <div class="post-heading">
             <div class="tags">
               
+              <a class="tag" href="/tags/#Redis" title="Redis">Redis</a>
+              
             </div>
-            <h1>redis跳跃表的实现</h1>
-            <h2 class="subheading"></h2>
+            <h1>Redis跳跃表的实现</h1>
+            <h2 class="subheading">介绍redis跳跃表的实现</h2>
             <span class="meta">
               Posted by Fudada on
               2020-12-29
@@ -337,11 +339,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">1</span> Minutes
+              Estimated Reading Time <span class="post-count">3</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">0</span> In Total
+              Words <span class="post-count">836</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -401,7 +403,38 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        
+        <h1 id="Redis跳跃表的实现"><a href="#Redis跳跃表的实现" class="headerlink" title="Redis跳跃表的实现"></a>Redis跳跃表的实现</h1><p>在这一篇文章中，我们主要学习的是redis里的跳跃表实现，主要回答以下几个问题</p>
+<ul>
+<li>redis跳跃表是怎么实现的？</li>
+<li>为什么使用跳跃表而不使用平衡树？</li>
+<li>相比较于平衡树，它有什么优点？</li>
+</ul>
+<h3 id="跳跃表概述"><a href="#跳跃表概述" class="headerlink" title="跳跃表概述"></a>跳跃表概述</h3><p>下面举一个和跳跃表最为贴切的例子，就是我们常见到的目录。如果我们不添加一级目录，二级目录这样的多级目录的话，我们要查找我们想要获得的内容时，就不得不从头开始像向尾找。所以为了更快的找到我们想要的内容，就会在一些节点上添加一级更高层级的目录。这样我们就可以先查找最高级目录，再往下找我们需要的内容。讲到这，是不是好像感觉这个听起来牛逼哄哄的数据结构也没那么niubility哈哈？下面我们简单介绍一下跳跃表，关于它的实现会在数据结构分类中专门写一篇文章介绍它。</p>
+<h3 id="跳跃表的简单介绍"><a href="#跳跃表的简单介绍" class="headerlink" title="跳跃表的简单介绍"></a>跳跃表的简单介绍</h3><p>首先跳跃表是一个普通的有序链表，比如下面这样，如果我们要查找一个元素，则不得不从头找，这样时间复杂度为O(n）</p>
+<p><img src="https://i.loli.net/2020/12/29/YDVLuWX9rTPQEfO.png" alt="img"></p>
+<h3 id="Redis里的跳跃表"><a href="#Redis里的跳跃表" class="headerlink" title="Redis里的跳跃表"></a>Redis里的跳跃表</h3><p><img src="https://i.loli.net/2020/12/29/sRB792zuYTy8Jwf.png" alt="image-20201229104420814"></p>
+<p>上图展示的就是redis里跳跃表的大致结构，它包含有下面的一些属性</p>
+<blockquote>
+<p><code>struct zskiplistNode *header</code>：指向跳跃表的表头节点。</p>
+<p><code>struct zskiplistNode *tail</code>：指向跳跃表的表尾节点。</p>
+<p><code>int level</code>：记录目前跳跃表内，层数最大的那个节点的层数（表头节点的层数不计算在内）。</p>
+<p><code>unsigned long length</code>：记录跳跃表的长度，也即是，跳跃表目前包含节点的数量（表头节点不计算在内）。</p>
+</blockquote>
+<p>它的结构体定义在<code>server.h</code>的头文件里，具体如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">zskiplist</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">zskiplistNode</span> *<span class="title">header</span>, *<span class="title">tail</span>;</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> length;</span><br><span class="line">    <span class="keyword">int</span> level;</span><br><span class="line">&#125; zskiplist;</span><br></pre></td></tr></table></figure>
+
+<p>而它的节点类型的结构体如下，下面我们介绍下它节点类型的属性</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* ZSETs use a specialized version of Skiplists */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">zskiplistNode</span> &#123;</span></span><br><span class="line">    sds ele;</span><br><span class="line">    <span class="keyword">double</span> score;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">zskiplistNode</span> *<span class="title">backward</span>;</span></span><br><span class="line">    <span class="comment">/*	定义一个层级数组，但还没有分配空间*/</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">zskiplistLevel</span> &#123;</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">zskiplistNode</span> *<span class="title">forward</span>;</span></span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">long</span> span;</span><br><span class="line">    &#125; level[];<span class="comment">/* 存在有最小值，最大值为32*/</span></span><br><span class="line">&#125; zskiplistNode; <span class="comment">//zskiplistNode 是别名,并没有定义</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>double score</code>：上图中的1.0,2.0，3.0等分值，节点按各自所保存的分值从小到大排列</p>
+<p><code>struct zskiplistNode *backward</code>：后退指针，即如果在一个高level中，遍历寻找到一个比要查找的值大的节点时，会回退到这个节点的上一个节点，然后就会往下层级去遍历，依次循环直到找到值或到null。</p>
+<p><code>struct zskiplistLevel level[]</code> :节点的层级数组，每个层级包含一个<code>forward</code>前进指针，一个<code>span</code>跨度，跨度的意思就是两个节点之间的距离。</p>
+</blockquote>
+<h3 id="重要的方法"><a href="#重要的方法" class="headerlink" title="重要的方法"></a>重要的方法</h3><p>初始化一个跳跃表</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Create a new skiplist. */</span></span><br><span class="line"><span class="function">zskiplist *<span class="title">zslCreate</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    zskiplist *zsl;</span><br><span class="line"></span><br><span class="line">    zsl = zmalloc(<span class="keyword">sizeof</span>(*zsl));</span><br><span class="line">    zsl-&gt;level = <span class="number">1</span>;</span><br><span class="line">    zsl-&gt;length = <span class="number">0</span>;</span><br><span class="line">    zsl-&gt;header = zslCreateNode(ZSKIPLIST_MAXLEVEL,<span class="number">0</span>,<span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; ZSKIPLIST_MAXLEVEL; j++) &#123;</span><br><span class="line">        zsl-&gt;header-&gt;level[j].forward = <span class="literal">NULL</span>;</span><br><span class="line">        zsl-&gt;header-&gt;level[j].span = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    zsl-&gt;header-&gt;backward = <span class="literal">NULL</span>;</span><br><span class="line">    zsl-&gt;tail = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> zsl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
         <hr>
         <!-- Pager -->
@@ -452,7 +485,7 @@
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=redis跳跃表的实现&body=Hi,I found this website and thought you might like it fudada.fun/2020/12/29/redis跳跃表的实现/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=Redis跳跃表的实现&body=Hi,I found this website and thought you might like it fudada.fun/2020/12/29/redis跳跃表的实现/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -492,7 +525,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Redis跳跃表的实现"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Redis跳跃表的实现</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#跳跃表概述"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">跳跃表概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#跳跃表的简单介绍"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">跳跃表的简单介绍</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Redis里的跳跃表"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">Redis里的跳跃表</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#重要的方法"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">重要的方法</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
@@ -513,6 +546,8 @@
             <a href="/tags/">FEATURED TAGS</a>
           </h5>
           <div class="tags">
+            
+            <a class="tag" href="/tags/#Redis" title="Redis">Redis</a>
             
           </div>
         </section>
