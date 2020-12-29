@@ -392,6 +392,77 @@
   
 
 
+  <a href="/2020/11/27/Selector/">
+    <h2 class="post-title">
+      Selector的基本原理和使用
+    </h2>
+    <h3 class="post-subtitle">
+      这篇文章主要是介绍Selector的基本原理和使用
+    </h3>
+    <div class="post-content-preview">
+      Selector的基本原理和使用与传统的同步阻塞IO（BIO）不同，同步非阻塞IO主要的不同点是，它有一个选择器（Selector）会监听每条传输通道（Channel）是否有事件发生，当检测到有事件发生后才会去对应的通道进行事件处理。这就像是一端对多端。相比于BIO的一端只能对一端的单向传输（Stream流）形式，性能上有很大的提升。但也因为需要检测的原因，所以也Selector不可避免的产......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by Fudada on
+    2020-11-27
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#NIO" title="NIO">NIO</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+
+  <a href="/2020/11/26/Hashmap1.7/">
+    <h2 class="post-title">
+      Hashmap 1.7源码解析
+    </h2>
+    <h3 class="post-subtitle">
+      Hashmap1.7重要知识解析
+    </h3>
+    <div class="post-content-preview">
+      Hashmap1.7在我们开始学习Hashmap的时候，1.7的Hashmap无疑是最好的切入点，相比于1.8的实现，它更为简单。Hashmap1.7内部是使用数组加单链表的实现。在下面，我们先开始了解下它一些重要的静态常量吧
+静态常量12345678/** hashmap默认的容量*/static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by Fudada on
+    2020-11-26
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#Collection" title="Collection">Collection</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+
   <a href="/2020/11/26/ReentrantLock/">
     <h2 class="post-title">
       ReentrantLock
@@ -539,6 +610,10 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     <a href="/tags/#java高级特性" title="java高级特性" rel="1">java高级特性</a>
     
     
+    
+    <a href="/tags/#二叉树" title="二叉树" rel="1">二叉树</a>
+    
+    
   </div>
 </section>
 
@@ -599,6 +674,14 @@ AQS在学习ReentrantLock之前，我们必须先学下......
 <div class="widget">
   <ul>
     
+    <a href="../../2020/12/29/redis%E8%B7%B3%E8%B7%83%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0/">
+      <li>redis跳跃表的实现</li>
+    </a>
+    
+    <a href="../../2020/12/23/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/">
+      <li>平衡二叉树</li>
+    </a>
+    
     <a href="../../2020/12/19/%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE/">
       <li>网络层协议</li>
     </a>
@@ -609,14 +692,6 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     
     <a href="../../2020/12/14/HTTP%E7%9A%84%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86/">
       <li>HTTP的重要知识</li>
-    </a>
-    
-    <a href="../../2020/12/13/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-      <li>Java多线程设计模式</li>
-    </a>
-    
-    <a href="../../2020/12/07/TCP%E7%9A%84%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86/">
-      <li>TCP的重要知识点</li>
     </a>
     
   </ul>
@@ -640,7 +715,7 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     <!-- <h5>ARCHIVES</h5> -->
     <h5><a href="/archives/">ARCHIVES</a></h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../2020/12/">December 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2020/11/">November 2020</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../2020/12/">December 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2020/11/">November 2020</a><span class="archive-list-count">5</span></li></ul>
     </div>
 
 
@@ -675,6 +750,10 @@ AQS在学习ReentrantLock之前，我们必须先学下......
     
     <a href="/categories/#Java基础">
       <li>Java基础</li>
+    </a>
+    
+    <a href="/categories/#数据结构">
+      <li>数据结构</li>
     </a>
     
   </ul>
