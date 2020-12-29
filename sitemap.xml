@@ -2,7 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>fudada.fun/2020/12/29/redis%E8%B7%B3%E8%B7%83%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0/</loc>
+    <loc>fudada.fun/2020/12/29/Redis%E8%B7%B3%E8%B7%83%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0/</loc>
+    
+    <lastmod>2020-12-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>fudada.fun/2020/11/26/Hashmap1.7/</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -138,13 +145,6 @@
     <loc>fudada.fun/2020/11/27/Selector/</loc>
     
     <lastmod>2020-11-29</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>fudada.fun/2020/11/26/Hashmap1.7/</loc>
-    
-    <lastmod>2020-11-28</lastmod>
     
   </url>
   
