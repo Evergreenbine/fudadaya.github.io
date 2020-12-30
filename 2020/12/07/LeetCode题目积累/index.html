@@ -339,11 +339,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">4</span> Minutes
+              Estimated Reading Time <span class="post-count">5</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1k</span> In Total
+              Words <span class="post-count">1.4k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -416,6 +416,18 @@
 </ul>
 <p>​    </p>
 <h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><ul>
+<li><p><a href="https://leetcode-cn.com/problems/second-minimum-node-in-a-binary-tree/" target="_blank" rel="noopener">二叉树中第二小的节点（671）</a></p>
+<blockquote>
+<p>思路：节点的孩子数只能为0或2，根节点的值只能取孩子节点中值较小的那个。那按这样想，整棵树中根节点的值最小，因为只能取孩子节点中值较小的嘛。</p>
+<p>那如果我们从一个节点node去考虑的话，即这个节点要去孩子节点去比较，如果有孩子节点值和node的值相等，就取另外一个不相等的。如果没有，我们就去看下</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findSecondMinimumValue</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* 对于一个节点来说,如果为null,则返回-1*/</span></span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="comment">/* 如果就只有一个节点，它的值肯定是和根节点一样的，没有第二大的值，也返回-1*/</span></span><br><span class="line">    <span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="comment">/* 存左右孩子的值*/</span></span><br><span class="line">    <span class="keyword">int</span> leftVal = root.left.val;</span><br><span class="line">    <span class="keyword">int</span> rightVal = root.right.val;</span><br><span class="line">    <span class="comment">/* 如果这个节点和左孩子的值相等，我们一定会去取右孩子值吗？不一定，因为</span></span><br><span class="line"><span class="comment">       左孩子的孩子中可能存在一个比左孩子大但又比这个节点的右孩子小的，那么</span></span><br><span class="line"><span class="comment">   	   第二大的值就不一定了，所以要去递归找</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">if</span> (leftVal == root.val) leftVal = findSecondMinimumValue(root.left);</span><br><span class="line">    <span class="comment">/* 右孩子的值和根节点的值相等也和上面说的同理</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">if</span> (rightVal == root.val) rightVal = findSecondMinimumValue(root.right);</span><br><span class="line">    <span class="comment">/* </span></span><br><span class="line"><span class="comment">    	</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">if</span> (leftVal != -<span class="number">1</span> &amp;&amp; rightVal != -<span class="number">1</span>) <span class="keyword">return</span> Math.min(leftVal, rightVal);</span><br><span class="line">    <span class="comment">/*  </span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">if</span> (leftVal != -<span class="number">1</span>) <span class="keyword">return</span> leftVal;</span><br><span class="line">    <span class="keyword">return</span> rightVal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
 <li><p><a href="https://leetcode-cn.com/problems/sum-of-left-leaves/" target="_blank" rel="noopener">左叶子之和（404）</a></p>
 <blockquote>
 <p>思路：对于一个节点来说，左节点是叶子节点，则相加，否则继续遍历至是叶子节点。右节点不是叶子节点再遍历，否则就没必要遍历了。</p>
