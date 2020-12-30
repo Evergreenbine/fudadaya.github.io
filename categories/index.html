@@ -205,6 +205,13 @@
 
           
           <li>
+            <a href="/about/">About</a>
+          </li>
+          
+          
+
+          
+          <li>
             <a href="/archive/">Archives</a>
           </li>
           
@@ -234,13 +241,6 @@
           
           <li>
             <a href="/pictures/">pictures</a>
-          </li>
-          
-          
-
-          
-          <li>
-            <a href="/about/">About</a>
           </li>
           
           
@@ -372,25 +372,70 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
+        <a href="#Java基础" title="Java基础" rel="2">Java基础</a>
+        
         <a href="#计算机基础知识" title="计算机基础知识" rel="3">计算机基础知识</a>
         
         <a href="#Leetcode" title="Leetcode" rel="1">Leetcode</a>
         
-        <a href="#Java网络编程" title="Java网络编程" rel="2">Java网络编程</a>
+        <a href="#MySql" title="MySql" rel="1">MySql</a>
         
         <a href="#Java多线程" title="Java多线程" rel="3">Java多线程</a>
         
-        <a href="#MySql" title="MySql" rel="1">MySql</a>
+        <a href="#中间件" title="中间件" rel="1">中间件</a>
         
-        <a href="#Java基础" title="Java基础" rel="2">Java基础</a>
+        <a href="#Java网络编程" title="Java网络编程" rel="2">Java网络编程</a>
         
         <a href="#数据结构" title="数据结构" rel="1">数据结构</a>
-        
-        <a href="#中间件" title="中间件" rel="1">中间件</a>
         
       </div>
 
       <!-- 标签列表 -->
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="Java基础">
+          <span class="tag-text">Java基础</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2020/11/26/Hashmap1.7/">
+            <h2 class="post-title">
+              Hashmap 1.7源码解析
+            </h2>
+            
+            <h3 class="post-subtitle">
+              Hashmap1.7重要知识解析
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2020/12/19/Java注解/">
+            <h2 class="post-title">
+              Java注解
+            </h2>
+            
+            <h3 class="post-subtitle">
+              Java注解的基本使用
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
       
       <div class="one-tag-list">
         <span class="fa fa-tag listing-seperator" id="计算机基础知识">
@@ -483,8 +528,8 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Java网络编程">
-          <span class="tag-text">Java网络编程</span>
+        <span class="fa fa-tag listing-seperator" id="MySql">
+          <span class="tag-text">MySql</span>
         </span>
         
         <!-- <li class="listing-item">
@@ -492,32 +537,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2020/11/28/Netty的基本使用/">
+          <a href="/2020/12/03/Explain查询计划的使用/">
             <h2 class="post-title">
-              Netty的基本使用
+              Explain查询计划的使用
             </h2>
             
             <h3 class="post-subtitle">
-              主要介绍Netty的使用
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2020/11/27/Selector/">
-            <h2 class="post-title">
-              Selector的基本原理和使用
-            </h2>
-            
-            <h3 class="post-subtitle">
-              这篇文章主要是介绍Selector的基本原理和使用
+              主要介绍explain查询计划的使用和索引失效的情况
             </h3>
             
           </a>
@@ -584,8 +610,8 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="MySql">
-          <span class="tag-text">MySql</span>
+        <span class="fa fa-tag listing-seperator" id="中间件">
+          <span class="tag-text">中间件</span>
         </span>
         
         <!-- <li class="listing-item">
@@ -593,13 +619,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2020/12/03/Explain查询计划的使用/">
+          <a href="/2020/12/29/Redis跳跃表的实现/">
             <h2 class="post-title">
-              Explain查询计划的使用
+              Redis跳跃表的实现
             </h2>
             
             <h3 class="post-subtitle">
-              主要介绍explain查询计划的使用和索引失效的情况
+              介绍redis跳跃表的实现
             </h3>
             
           </a>
@@ -610,8 +636,8 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Java基础">
-          <span class="tag-text">Java基础</span>
+        <span class="fa fa-tag listing-seperator" id="Java网络编程">
+          <span class="tag-text">Java网络编程</span>
         </span>
         
         <!-- <li class="listing-item">
@@ -619,13 +645,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2020/11/26/Hashmap1.7/">
+          <a href="/2020/11/27/Selector/">
             <h2 class="post-title">
-              Hashmap 1.7源码解析
+              Selector的基本原理和使用
             </h2>
             
             <h3 class="post-subtitle">
-              Hashmap1.7重要知识解析
+              这篇文章主要是介绍Selector的基本原理和使用
             </h3>
             
           </a>
@@ -638,13 +664,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2020/12/19/Java注解/">
+          <a href="/2020/11/28/Netty的基本使用/">
             <h2 class="post-title">
-              Java注解
+              Netty的基本使用
             </h2>
             
             <h3 class="post-subtitle">
-              Java注解的基本使用
+              主要介绍Netty的使用
             </h3>
             
           </a>
@@ -671,32 +697,6 @@
             
             <h3 class="post-subtitle">
               介绍平衡二叉树的概念及实现
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="中间件">
-          <span class="tag-text">中间件</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2020/12/29/Redis跳跃表的实现/">
-            <h2 class="post-title">
-              Redis跳跃表的实现
-            </h2>
-            
-            <h3 class="post-subtitle">
-              介绍redis跳跃表的实现
             </h3>
             
           </a>

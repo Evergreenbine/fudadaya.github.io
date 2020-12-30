@@ -205,6 +205,13 @@
 
           
           <li>
+            <a href="/about/">About</a>
+          </li>
+          
+          
+
+          
+          <li>
             <a href="/archive/">Archives</a>
           </li>
           
@@ -234,13 +241,6 @@
           
           <li>
             <a href="/pictures/">pictures</a>
-          </li>
-          
-          
-
-          
-          <li>
-            <a href="/about/">About</a>
           </li>
           
           
@@ -339,11 +339,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">3</span> Minutes
+              Estimated Reading Time <span class="post-count">4</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">852</span> In Total
+              Words <span class="post-count">1k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -416,6 +416,17 @@
 </ul>
 <p>​    </p>
 <h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><ul>
+<li><p><a href="https://leetcode-cn.com/problems/sum-of-left-leaves/" target="_blank" rel="noopener">左叶子之和（404）</a></p>
+<blockquote>
+<p>思路：对于一个节点来说，左节点是叶子节点，则相加，否则继续遍历至是叶子节点。右节点不是叶子节点再遍历，否则就没必要遍历了。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> root == <span class="keyword">null</span> ? <span class="number">0</span> :dfs(root);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(TreeNode node)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(node.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">/* 累加左孩子的叶子节点和*/</span></span><br><span class="line">            sum += isLeafNode(node.left) ? node.left.val : dfs(node.left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(node.right != <span class="keyword">null</span> &amp;&amp; !isLeafNode(node.right))&#123;</span><br><span class="line">            sum += dfs(node.right);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 判断是否叶子节点*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isLeafNode</span><span class="params">(TreeNode node)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> node.left == <span class="keyword">null</span> &amp;&amp; node.right == <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
 <li><p><a href="https://leetcode-cn.com/problems/merge-two-binary-trees/" target="_blank" rel="noopener">合并二叉树（617）</a></p>
 <blockquote>
 <p>思路：我们要把左右节点当做根节点去处理，即只对根节点去做条件处理，而对于左右孩子处理是递归到它，又把它当做根节点去处理</p>

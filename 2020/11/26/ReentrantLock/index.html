@@ -205,6 +205,13 @@
 
           
           <li>
+            <a href="/about/">About</a>
+          </li>
+          
+          
+
+          
+          <li>
             <a href="/archive/">Archives</a>
           </li>
           
@@ -234,13 +241,6 @@
           
           <li>
             <a href="/pictures/">pictures</a>
-          </li>
-          
-          
-
-          
-          <li>
-            <a href="/about/">About</a>
           </li>
           
           
@@ -403,7 +403,7 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="ReentrantLock源码解析"><a href="#ReentrantLock源码解析" class="headerlink" title="ReentrantLock源码解析"></a>ReentrantLock源码解析</h1><h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>在java中重入锁有两个，一个是synchronized关键字，是C++实现的，而另外一个就是本篇文章中的主角儿ReentrantLock。ReentrantLock是在jdk 1.5版本后引入的juc包中一个比较重要的工具类，由著名的并发大师Doug Lea编写；接下来就让我们一起来学习一下它吧。</p>
+        <h1 id="ReentrantLock源码解析"><a href="#ReentrantLock源码解析" class="headerlink" title="ReentrantLock源码解析"></a>ReentrantLock源码解析</h1><h3 id><a href="#" class="headerlink" title></a></h3><p>在java中重入锁有两个，一个是synchronized关键字，是C++实现的，而另外一个就是本篇文章中的主角儿ReentrantLock。ReentrantLock是在jdk 1.5版本后引入的juc包中一个比较重要的工具类，由著名的并发大师Doug Lea编写；接下来就让我们一起来学习一下它吧。</p>
 <h3 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h3><p>在学习ReentrantLock之前，我们必须先学下AQS，它是一个实现锁和一些相关的同步器如（semaphores，events）的框架。它内部是一个独占线程，同步状态state，FIFO的等待队列和提供原子CAS方法的UnSafe对象组成。它的类图关系如下</p>
 <p><img src="https://i.loli.net/2020/10/25/OpCXDQkVrhZUSeq.png" alt="image-20201025205659839"></p>
 <h5 id="内部组成图"><a href="#内部组成图" class="headerlink" title="内部组成图"></a>内部组成图</h5><p><img src="https://i.loli.net/2020/10/25/bolvkBrOyT78msN.png" alt="image-20201025210326186"></p>

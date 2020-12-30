@@ -205,6 +205,13 @@
 
           
           <li>
+            <a href="/about/">About</a>
+          </li>
+          
+          
+
+          
+          <li>
             <a href="/archive/">Archives</a>
           </li>
           
@@ -234,13 +241,6 @@
           
           <li>
             <a href="/pictures/">pictures</a>
-          </li>
-          
-          
-
-          
-          <li>
-            <a href="/about/">About</a>
           </li>
           
           
@@ -403,8 +403,8 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="Selector的基本原理和使用"><a href="#Selector的基本原理和使用" class="headerlink" title="Selector的基本原理和使用"></a>Selector的基本原理和使用</h1><h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>与传统的同步阻塞IO（BIO）不同，同步非阻塞IO主要的不同点是，它有一个选择器（Selector）会监听每条传输通道（Channel）是否有事件发生，当检测到有事件发生后才会去对应的通道进行事件处理。这就像是一端对多端。相比于BIO的一端只能对一端的单向传输（Stream流）形式，性能上有很大的提升。但也因为需要检测的原因，所以也Selector不可避免的产生空轮询的问题。</p>
-<p><img src="https://i.loli.net/2020/11/29/jZgJrxKiQf71Xal.png" alt=""></p>
+        <h1 id="Selector的基本原理和使用"><a href="#Selector的基本原理和使用" class="headerlink" title="Selector的基本原理和使用"></a>Selector的基本原理和使用</h1><h3 id><a href="#" class="headerlink" title></a></h3><p>与传统的同步阻塞IO（BIO）不同，同步非阻塞IO主要的不同点是，它有一个选择器（Selector）会监听每条传输通道（Channel）是否有事件发生，当检测到有事件发生后才会去对应的通道进行事件处理。这就像是一端对多端。相比于BIO的一端只能对一端的单向传输（Stream流）形式，性能上有很大的提升。但也因为需要检测的原因，所以也Selector不可避免的产生空轮询的问题。</p>
+<p><img src="https://i.loli.net/2020/11/29/jZgJrxKiQf71Xal.png" alt></p>
 <h3 id="Selector介绍"><a href="#Selector介绍" class="headerlink" title="Selector介绍"></a>Selector介绍</h3><p>首先我们要知道的Selector的基本工作原理。Selector内部注册了很多Channel，而每个Channel都会有一个与之对应的SelectionKey，我们可以通过这个Key去获取对应的通道。而两端之间是通过数据包装成Buffer传入通道。Selector通过循环检测每个通道是否有事件发生，有即处理这些数据的输。我们可以大致看一下Selector的实现类。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectorImpl</span> <span class="keyword">extends</span> <span class="title">AbstractSelector</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Set&lt;SelectionKey&gt; selectedKeys = <span class="keyword">new</span> HashSet();</span><br><span class="line">    <span class="keyword">protected</span> HashSet&lt;SelectionKey&gt; keys = <span class="keyword">new</span> HashSet();</span><br><span class="line">    <span class="keyword">private</span> Set&lt;SelectionKey&gt; publicKeys;</span><br><span class="line">    <span class="keyword">private</span> Set&lt;SelectionKey&gt; publicSelectedKeys;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
