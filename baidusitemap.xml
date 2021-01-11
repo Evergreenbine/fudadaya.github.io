@@ -2,6 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>fudada.fun/2020/12/07/LeetCode%E9%A2%98%E7%9B%AE%E7%A7%AF%E7%B4%AF/</loc>
+    <lastmod>2021-01-11</lastmod>
+  </url>
+  <url>
+    <loc>fudada.fun/2021/01/01/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2021-01-01</lastmod>
+  </url>
+  <url>
+    <loc>fudada.fun/2020/11/26/ReentrantLock/</loc>
     <lastmod>2021-01-01</lastmod>
   </url>
   <url>
@@ -42,10 +50,6 @@
   </url>
   <url>
     <loc>fudada.fun/2020/12/13/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2020-12-13</lastmod>
-  </url>
-  <url>
-    <loc>fudada.fun/2020/11/26/ReentrantLock/</loc>
     <lastmod>2020-12-13</lastmod>
   </url>
   <url>
