@@ -339,7 +339,7 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">5</span> Minutes
+              Estimated Reading Time <span class="post-count">6</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
@@ -476,14 +476,19 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">removeMax</span><span class="params">()</span></span>&#123;</span><br><span class="line">    E ret = maximum();</span><br><span class="line">    root = removeMax(root);</span><br><span class="line">    <span class="keyword">return</span> E;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">removeMax</span><span class="params">(Node noed)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">        Node leftNode = node.left;</span><br><span class="line">        <span class="comment">/* 断开左孩子的联系，把左孩子拼接替代这个父节点的位置，所以其实是</span></span><br><span class="line"><span class="comment">        	删了一个节点</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        node.left = <span class="keyword">null</span>;</span><br><span class="line">        size --;</span><br><span class="line">        <span class="keyword">return</span> rightNode;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    node.right = removeMax(node.right);</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h6 id="删除任意元素"><a href="#删除任意元素" class="headerlink" title="删除任意元素"></a>删除任意元素</h6><blockquote>
-<p>思路：Hibbard Deletion。我们使用的是在1962年，由Hibbard这个科学家提出的删除方法</p>
+<p>思路：Hibbard Deletion。我们使用的是在1962年，由Hibbard这个科学家提出的删除方法。</p>
+<p>假如这个待删除的元素左右都有孩子，我们只要找到与这个元素值最接近的元素。仔细观察，我们可以发现，右孩子的第一个左孩子，就是这个元素。然后我们只要将其覆盖便完成了这删除的操作。</p>
 </blockquote>
-<p><img src="/.fun/2021/01//../../Notes/Pictures/image-20210116180014985.png" alt="image-20210116180014985"></p>
+<p><img src="https://i.loli.net/2021/01/16/6Tgy9HWOMDnVcuh.png" alt="image-20210116225126764"></p>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
+          
+          <li class="previous">
+            <a href="/2021/01/17/IOC源码之重要类图关系/" data-toggle="tooltip" data-placement="top" title="IOC源码之核心接口和类的解读">&larr; Previous Post</a>
+          </li>
           
           
           <li class="next">
