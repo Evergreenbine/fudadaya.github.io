@@ -343,7 +343,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">919</span> In Total
+              Words <span class="post-count">1k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -405,7 +405,7 @@
 
         <h1 id="Tomcat学习笔记"><a href="#Tomcat学习笔记" class="headerlink" title="Tomcat学习笔记"></a>Tomcat学习笔记</h1><h5 id="Tomcat简介"><a href="#Tomcat简介" class="headerlink" title="Tomcat简介"></a>Tomcat简介</h5><p>Tomcat是一款完全免费开源的Servlet容器实现，其实我更愿意说它是一款支持动态网页的http服务器。它支持的协议有http1，http2以及ajp协议。Tomcat的在8.0版本后开始，开始支持Servlet3.0以上的规范，WebSocket协议的实现；在8.5版本后移除BIO的实现方式，而采用NIO/NIO2(AIO)的方式进行了重新实现。</p>
 <h5 id="Tomcat的目录结构"><a href="#Tomcat的目录结构" class="headerlink" title="Tomcat的目录结构"></a>Tomcat的目录结构</h5><p><img src="https://i.loli.net/2021/06/29/OlAg3eNQTy8kWfV.png" alt="image-20210629160052241"></p>
-<h5 id="Tomcat的启动流程"><a href="#Tomcat的启动流程" class="headerlink" title="Tomcat的启动流程"></a>Tomcat的启动流程</h5><p>在学习Tomcat之前，一直有个问题困惑着我的小脑袋，那就是一请求对应的是一个线程去处理吗？这小问题从我学习mvc框架的时候就产生了，不过所幸的是，在tocmat项目里的<a href="https://tomcat.apache.org/tomcat-8.5-doc/architecture/startup/serverStartup.txt" target="_blank" rel="noopener">serverStartup.txt</a>解决了我的疑惑，对应的<a href="https://tomcat.apache.org/tomcat-8.5-doc/architecture/startup/serverStartup.pdf" target="_blank" rel="noopener">时序图文档</a>在这。</p>
+<h5 id="Tomcat的启动流程概述"><a href="#Tomcat的启动流程概述" class="headerlink" title="Tomcat的启动流程概述"></a>Tomcat的启动流程概述</h5><p>在学习Tomcat之前，一直有个问题困惑着我的小脑袋，那就是一请求对应的是一个线程去处理吗？这小问题从我学习mvc框架的时候就产生了，不过所幸的是，在tocmat项目里的<a href="https://tomcat.apache.org/tomcat-8.5-doc/architecture/startup/serverStartup.txt" target="_blank" rel="noopener">serverStartup.txt</a>解决了我的疑惑，对应的<a href="https://tomcat.apache.org/tomcat-8.5-doc/architecture/startup/serverStartup.pdf" target="_blank" rel="noopener">时序图文档</a>在这。</p>
 <p>下面是我比较关心一些核心的点</p>
 <ul>
 <li><p><code>Catalina(Servlet容器的初始化)</code>的初始化</p>
@@ -469,6 +469,35 @@
 <p><strong>请求处理流程</strong></p>
 <p><img src="https://i.loli.net/2021/06/29/Wqx3BMeciLGJvUz.png" alt="image-20210629183637269"></p>
 <h5 id="Catalina（Servlet容器）的组成"><a href="#Catalina（Servlet容器）的组成" class="headerlink" title="Catalina（Servlet容器）的组成"></a>Catalina（Servlet容器）的组成</h5><p><img src="https://i.loli.net/2021/06/30/B2qCplLrIHxKTcf.png" alt="image-20210630000015778"></p>
+<p><strong>Container的组成</strong></p>
+<p><img src="https://i.loli.net/2021/07/01/jYakoAs3Dt5EbxI.png" alt="image-20210701210103018"></p>
+<table>
+<thead>
+<tr>
+<th>容器</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Engine</td>
+<td>表示整个Catalina的Servlet引擎，用来管理多个虚拟站点，一个Service最多只有一个Engine，一个Engine包含多个Host。</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>代表一个站点，给Tomcat配置多个Host，可以用一个Tomcat部署多个域名的站点。</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>表示一个Web应用程序，就是一个项目啦。</td>
+</tr>
+<tr>
+<td>Wrapper</td>
+<td>表示一个基本Servlet，也即是一个Servlet。</td>
+</tr>
+</tbody></table>
+<p><strong>各个容器的基本实现</strong></p>
+<p><img src="https://i.loli.net/2021/07/01/swkcSl7HGvRAFzo.png" alt="image-20210701211136584"></p>
+<h5 id="Tomcat启动流程代码浏览"><a href="#Tomcat启动流程代码浏览" class="headerlink" title="Tomcat启动流程代码浏览"></a>Tomcat启动流程代码浏览</h5><p><img src="https://i.loli.net/2021/07/01/mgRrXlBJOjbedYW.png" alt="image-20210701223841941"></p>
 
 
         <hr>
@@ -560,7 +589,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Tomcat学习笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Tomcat学习笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Tomcat简介"><span class="toc-nav-number">1.0.0.0.1.</span> <span class="toc-nav-text">Tomcat简介</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Tomcat的目录结构"><span class="toc-nav-number">1.0.0.0.2.</span> <span class="toc-nav-text">Tomcat的目录结构</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Tomcat的启动流程"><span class="toc-nav-number">1.0.0.0.3.</span> <span class="toc-nav-text">Tomcat的启动流程</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Tomcat的总体架构"><span class="toc-nav-number">1.0.0.0.4.</span> <span class="toc-nav-text">Tomcat的总体架构</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Coyote连接器组成"><span class="toc-nav-number">1.0.0.0.5.</span> <span class="toc-nav-text">Coyote连接器组成</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Catalina（Servlet容器）的组成"><span class="toc-nav-number">1.0.0.0.6.</span> <span class="toc-nav-text">Catalina（Servlet容器）的组成</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Tomcat学习笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Tomcat学习笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Tomcat简介"><span class="toc-nav-number">1.0.0.0.1.</span> <span class="toc-nav-text">Tomcat简介</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Tomcat的目录结构"><span class="toc-nav-number">1.0.0.0.2.</span> <span class="toc-nav-text">Tomcat的目录结构</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Tomcat的启动流程概述"><span class="toc-nav-number">1.0.0.0.3.</span> <span class="toc-nav-text">Tomcat的启动流程概述</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Tomcat的总体架构"><span class="toc-nav-number">1.0.0.0.4.</span> <span class="toc-nav-text">Tomcat的总体架构</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Coyote连接器组成"><span class="toc-nav-number">1.0.0.0.5.</span> <span class="toc-nav-text">Coyote连接器组成</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Catalina（Servlet容器）的组成"><span class="toc-nav-number">1.0.0.0.6.</span> <span class="toc-nav-text">Catalina（Servlet容器）的组成</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Tomcat启动流程代码浏览"><span class="toc-nav-number">1.0.0.0.7.</span> <span class="toc-nav-text">Tomcat启动流程代码浏览</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
